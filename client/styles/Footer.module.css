@@ -1,0 +1,32 @@
+.main_footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
+.footer {
+  width: 100%;
+  margin-top: auto;
+  height: 100px;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.footer p {
+  margin-bottom: 0 !important;
+  background: #1d37c2 !important;
+  color: #fff !important;
+  padding: 0.5rem;
+  border-radius: 50px;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  text-decoration: none !important;
+  color: #1d37c2 !important;
+}

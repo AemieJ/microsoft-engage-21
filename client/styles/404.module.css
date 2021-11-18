@@ -1,0 +1,31 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.home_btn {
+  text-align: center;
+  border: 1px solid #1d37c2 !important;
+  background-color: #fff !important;
+  color: #1d37c2 !important;
+  border-radius: 5px !important;
+  margin-top: 1rem;
+  width: 30%;
+  margin-bottom: 2rem;
+}
+
+.home_btn:hover,
+.home_btn:active {
+  background: #1d37c2 !important;
+  color: #fff !important;
+}
