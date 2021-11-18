@@ -1,6 +1,7 @@
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import styles from '../styles/Header.module.css'
 import { useState, useEffect } from 'react'
+import { toast, ToastContainer } from 'react-nextjs-toast'
 
 const Header = () => {
     const [isLogged, setLogged] = useState(false)
@@ -30,8 +31,12 @@ const Header = () => {
                     {
                         !isLogged ? 
                         <Nav className="ms-auto">
-                            <Nav.Link href="/register" className={styles.link}>Register</Nav.Link>
-                            <Nav.Link href="/login" className={styles.login_link}>Login</Nav.Link>
+                            <Nav.Link className={styles.link}
+                            href="/register"
+                            >Register</Nav.Link>
+                            <Nav.Link className={styles.login_link}
+                            href="/login"
+                            >Login</Nav.Link>
                     </Nav>: 
                         <Nav className="ms-auto">
                         <Nav.Link className={styles.login_link}
