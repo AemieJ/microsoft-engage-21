@@ -65,11 +65,12 @@ export default function Login() {
                     localStorage.setItem("accessToken", accessToken)
                     localStorage.setItem("email", email)
                     localStorage.setItem("isLogged", 1)
+                    localStorage.setItem("role", parsed.role)
                     toast.notify('Successful Login', {
                         duration: 5,
                         type: "success"
                     })
-                    setTimeout(window.location.href = "/dashboard", 8000)
+                    setTimeout(window.location.href = `/dashboard/${parsed.role}`, 8000)
                 }
             } else {
                 toast.notify('Data filled is invalid', {

@@ -24,7 +24,7 @@ const Header = () => {
                     <Nav className="me-auto">
                             <Nav.Link href="/" className={styles.link}>Home</Nav.Link>
                             {
-                                !isLogged ? <></> : <Nav.Link href="/dashboard" className={styles.link}>Dashboard</Nav.Link>
+                                !isLogged ? <></> : <Nav.Link href={`/dashboard/${localStorage.getItem("role")}`} className={styles.link}>Dashboard</Nav.Link>
 
                             }
                     </Nav>
