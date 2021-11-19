@@ -132,31 +132,6 @@ export default function Register() {
 
                         <div className={styles.radio_sec}>
                             <div>
-                                <Form.Label><b>Gender</b></Form.Label>
-                                <div key={`inline-radio`} className={`mb-3 ${styles.form_control}`}>
-                                    <Form.Check
-                                        inline
-                                        required
-                                        label="male"
-                                        name="group1"
-                                        type="radio"
-                                        id="male"
-                                        checked={gender === 'male'}
-                                        onChange={() => { setGender("male") }}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        required
-                                        label="female"
-                                        name="group1"
-                                        type="radio"
-                                        id="female"
-                                        checked={gender === 'female'}
-                                        onChange={() => { setGender("female") }}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.role}>
                                 <Form.Label><b>User Role</b></Form.Label>
                                 <div key={`inline-radio-1`} className={`mb-3 ${styles.form_control}`}>
                                     <Form.Check

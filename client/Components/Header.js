@@ -46,6 +46,11 @@ const Header = () => {
                             href="/create"
                             >Create</Nav.Link> : <></>
                         }
+                        {
+                            role === 'faculty' ? <Nav.Link className={styles.link}
+                            href="/timetable"
+                            >Timetable</Nav.Link> : <></>
+                        }
                         <Nav.Link className={styles.login_link}
                         onClick={() => {
                             localStorage.removeItem("isLogged")

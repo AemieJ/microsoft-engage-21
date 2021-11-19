@@ -186,7 +186,7 @@ export default function Dashboard() {
             date.getDay() !== 5 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
             preferences are set and will be renewed on Saturday itself.</b></p> : <></>
         }
-
+        <Subjects subjects={subjects} />
         {
             showModal ? <ModalClass /> : <></>
         }

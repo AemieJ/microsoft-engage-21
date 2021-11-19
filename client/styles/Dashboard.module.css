@@ -95,8 +95,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    background-color: #1D37C2 !important;
-    color: #fff !important;
+    background-color: #fff !important;
+    color: #1D37C2 !important;
     padding: 10px;
     border-radius: 10px;
 }
@@ -122,6 +122,7 @@
     background-color:#1D37C2 !important;
     color: #fff !important;
     border: 2px solid #fff !important;
+    border-radius: 10px;
 }
 
 .fac_btn:hover,

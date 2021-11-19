@@ -98,6 +98,24 @@
   max-height: auto !important;
 }
 
+.time_sec {
+  display: flex;
+}
+
+.time_sec_item {
+  margin-right: 2rem;
+}
+
+.check_warn input {
+  margin-top: 0 !important;
+  margin-right: 1rem;
+}
+
+.check_alert {
+  color: #a10404;
+  font-size: .75rem;
+}
+
 @media (max-width: 991px) {
   .password,
   .role {

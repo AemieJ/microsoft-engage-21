@@ -19,7 +19,8 @@ button#scroll {
 
 .form-control,
 .btn,
-a {
+a,
+.form-check-input {
   transition: none !important
 }
 
@@ -38,9 +39,18 @@ a {
   box-shadow: none !important;
 }
 
-a:focus {
+a:focus,
+.form-check-input:focus {
   outline:0px !important; 
   box-shadow: none !important;
+}
+
+.input-group-text {
+  margin-right: 1rem;
+}
+
+.form-check-input:checked {
+  color: #a10404;
 }
 
 a {
@@ -50,4 +60,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
 }
