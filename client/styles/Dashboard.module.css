@@ -43,6 +43,11 @@
     color: #fff !important;
 }
 
+.danger_msg {
+    color: #a51010;
+    width: 80%;
+}
+
 .card_subtitle {
     opacity: 80%;
     font-size: .85rem;
@@ -86,7 +91,8 @@
 }
 
 @media (max-width: 991px) {
-    .description {
+    .description,
+    .danger_msg {
         width: 100%;
     }
 

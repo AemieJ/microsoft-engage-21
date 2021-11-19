@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { toast, ToastContainer } from 'react-nextjs-toast'
 import styles from '../../styles/Dashboard.module.css'
 import { server } from '../../config/server.js'
 import { useState, useEffect } from 'react'
-import { InputGroup, FormControl, Button } from 'react-bootstrap'
+import { InputGroup, FormControl, Button, Modal } from 'react-bootstrap'
+
 import Subjects from '../../Components/Subjects.js'
+import ModalClass from '../../Components/ModalClass.js'
 
 
 export default function Dashboard() {
@@ -14,6 +17,8 @@ export default function Dashboard() {
     const [remote, setRemote] = useState(null)
     const [person, setPerson] = useState(null)
     const [subjects, setSubjects] = useState([])
+    const [date, setDate] = useState(new Date())
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(()=>{
         const fetchCode = async () => {
@@ -25,7 +30,7 @@ export default function Dashboard() {
               })
           });
           const {data, err} = await res.json();
-          let parsed = JSON.parse(data)
+          let parsed = JSON.parse(data) // TODO: change when integration with backend is done
           
           setRemote(parsed.remote)
           setPerson(parsed.in_person)
@@ -43,8 +48,8 @@ export default function Dashboard() {
                 })
             });
             const {data, err} = await res.json();
-            let parsed = JSON.parse(data)
-            setSubjects(parsed)
+            let parsed = JSON.parse(data) 
+            setSubjects(parsed) // TODO: change when integration with backend is done
         }
 
         if (localStorage.getItem("role") === "student") {
@@ -53,11 +58,63 @@ export default function Dashboard() {
         }
       }, []);
     
+    const generateSeatCode = async (e) => {
+        e.preventDefault()
+        const res = await fetch(`${server}/api/generateSeat`, {
+            method: "post", 
+            body: JSON.stringify({ 
+                accessToken: token,
+                email: email
+            })
+        })
+
+        const { data, err } = await res.json()
+        if (err) {
+            toast.notify(err, {
+                duration: 5,
+                type: "error"
+            })
+        } else {
+            let parsed = JSON.parse(data)
+            if (parsed.seat_code !== null) {
+                // TODO: change will take place once integration with backend is performed
+                setPerson(parsed.seat_code)
+            } else {
+                toast.notify('No available seat for this week', {
+                    duration: 5,
+                    type: "error"
+                })
+            }
+        }        
+    }
+
+    const generateRemoteCode = async (e) => {
+        e.preventDefault()
+        let length = 6
+        let code = Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
+        setRemote(code)
+        let obj = {
+            remote: code
+        }
+
+        let body = {
+            email: email,
+            accessToken: token,
+            body: obj
+        }
+
+        // TODO: call update user api
+    }
+
     return (
         <>
         <div className={styles.title_sec}>
         <p className={styles.title}>Dashboard</p>
-        <Button>Join Class</Button>
+        <Button onClick={(e) => {
+            e.preventDefault()
+            // a modal popup 
+            setShowModal(true)
+        }}>Join Class</Button>
         </div>
         {
             role === "student" ? <p className={styles.description}>As a student, you can join a new class, find a 
@@ -79,7 +136,8 @@ export default function Dashboard() {
                 disabled={true}
                 onChange={e => setRemote(e.target.value)} />
                 <Button
-                disabled={remote !== null && remote !== ""}
+                disabled={date.getDay() !== 5 || (remote !== null && remote !== "")}
+                onClick={generateRemoteCode}
                 >Generate</Button>
             </InputGroup>
         </div>
@@ -94,12 +152,20 @@ export default function Dashboard() {
                 disabled={true}
                 onChange={e => setPerson(e.target.value)} />
                 <Button
-                disabled={person !== null && person !== ""}
+                disabled={date.getDay() !== 5 || (person !== null && person !== "")}
+                onClick={generateSeatCode}
                 >Generate</Button>
             </InputGroup>
         </div>
+        {
+            date.getDay() !== 5 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
+            preferences are set and will be renewed on Saturday itself.</b></p> : <></>
+        }
         <Subjects subjects={subjects} />
-            
+        {
+            showModal ? <ModalClass /> : <></>
+        }
+        <ToastContainer />
         </>
     )
 }
