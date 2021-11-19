@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { InputGroup, FormControl, Button, Modal } from 'react-bootstrap'
 
 import Subjects from '../../Components/Subjects.js'
+import FacultySubjects from '../../Components/FacultySubjects.js'
 import ModalClass from '../../Components/ModalClass.js'
 
 
@@ -17,6 +18,7 @@ export default function Dashboard() {
     const [remote, setRemote] = useState(null)
     const [person, setPerson] = useState(null)
     const [subjects, setSubjects] = useState([])
+    const [facSubs, setFacSubs] = useState([])
     const [date, setDate] = useState(new Date())
     const [showModal, setShowModal] = useState(false)
 
@@ -52,9 +54,27 @@ export default function Dashboard() {
             setSubjects(parsed) // TODO: change when integration with backend is done
         }
 
+        const fetchFacSubjects = async () => {
+            const res = await fetch(`${server}/api/fetchFacultySubject`, {
+                method: "post", 
+                body: JSON.stringify({
+                    accessToken: localStorage.getItem("accessToken"), 
+                    email: localStorage.getItem("email")
+                })
+            });
+            const {data, err} = await res.json();
+            let parsed = JSON.parse(data) 
+            setFacSubs(parsed) // TODO: change when integration with backend is done
+            setRole("faculty")
+            setEmail(localStorage.getItem("email"))
+            setToken(localStorage.getItem("accessToken"))
+        }
+
         if (localStorage.getItem("role") === "student") {
             fetchCode()
             fetchUserSubjects()
+        } else if (localStorage.getItem("role") === "faculty") {
+            fetchFacSubjects()
         }
       }, []);
     
@@ -106,15 +126,18 @@ export default function Dashboard() {
         // TODO: call update user api
     }
 
+    console.log(role, facSubs)
     return (
         <>
         <div className={styles.title_sec}>
         <p className={styles.title}>Dashboard</p>
-        <Button onClick={(e) => {
-            e.preventDefault()
-            // a modal popup 
-            setShowModal(true)
-        }}>Join Class</Button>
+        {
+            role === "student" ? <Button onClick={(e) => {
+                e.preventDefault()
+                // a modal popup 
+                setShowModal(true)
+            }}>Join Class</Button> : <></>
+        }
         </div>
         {
             role === "student" ? <p className={styles.description}>As a student, you can join a new class, find a 
@@ -126,7 +149,10 @@ export default function Dashboard() {
             keep track of the attendance for the week as well. The attendance is completely automated so {"don't"} worry
             and just go teach! 🚀</p>
         }
-        <div className={styles.codes}>
+    
+        {
+            role === "student" ? <>
+            <div className={styles.codes}>
             <div style={{ color: "#1d37c2" }}><b>Generate remote class code? &nbsp; &nbsp; &nbsp; &nbsp;</b></div>
             <InputGroup className={styles.remote_inp}>
                 <FormControl aria-label="Generate code" 
@@ -141,8 +167,7 @@ export default function Dashboard() {
                 >Generate</Button>
             </InputGroup>
         </div>
-    
-        <div className={styles.codes}>
+            <div className={styles.codes}>
             <div style={{ color: "#1d37c2" }}><b>Generate in-person seat code? &nbsp; &nbsp;</b></div>
             <InputGroup className={styles.remote_inp}>
                 <FormControl aria-label="Generate code" 
@@ -161,9 +186,13 @@ export default function Dashboard() {
             date.getDay() !== 5 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
             preferences are set and will be renewed on Saturday itself.</b></p> : <></>
         }
-        <Subjects subjects={subjects} />
+
         {
             showModal ? <ModalClass /> : <></>
+        }
+            </> : <>
+            <FacultySubjects subjects={facSubs} />
+            </>
         }
         <ToastContainer />
         </>

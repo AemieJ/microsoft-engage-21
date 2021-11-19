@@ -5,10 +5,12 @@ import { toast, ToastContainer } from 'react-nextjs-toast'
 
 const Header = () => {
     const [isLogged, setLogged] = useState(false)
+    const [role, setRole] = useState(null)
 
     useEffect(() => {
         let getItem = localStorage.getItem("isLogged")
         if (getItem === '1') {
+            setRole(localStorage.getItem("role"))
             setLogged(true)
         } else {
             setLogged(false)
@@ -39,6 +41,11 @@ const Header = () => {
                             >Login</Nav.Link>
                     </Nav>: 
                         <Nav className="ms-auto">
+                        {
+                            role === 'faculty' ? <Nav.Link className={styles.link}
+                            href="/create"
+                            >Create</Nav.Link> : <></>
+                        }
                         <Nav.Link className={styles.login_link}
                         onClick={() => {
                             localStorage.removeItem("isLogged")

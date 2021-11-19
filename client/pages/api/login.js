@@ -3,7 +3,7 @@ export default async (req, res) => {
     // fake response will be replaced with calls to the server
     try {
         let data = {
-            role: "student",
+            role: "faculty",
             accessToken: {
                 token: "9QYjTeJHoEuIgAKbeVFQQrxEqlsiKQhj",
                 expires: 1637252590

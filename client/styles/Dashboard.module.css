@@ -90,6 +90,48 @@
     color: #fff !important;
 }
 
+.fac_card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #1D37C2 !important;
+    color: #fff !important;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.fac_sec {
+    display: flex;
+    flex-direction: column;
+    flex: .2;
+    margin: 0 0 0 1.5rem;
+}
+
+.fac_sec_title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.fac_sec_description {
+    font-size: 1.1rem;
+    opacity: 80%;
+}
+
+.fac_btn {
+    background-color:#1D37C2 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+.fac_btn:hover,
+.fac_btn:active,
+.fac_btn:focus {
+    background-color: #fff !important;
+    color: #1D37C2 !important;
+    border-color: #1D37C2 !important;
+}
+
 @media (max-width: 991px) {
     .description,
     .danger_msg {
@@ -98,5 +140,16 @@
 
     .remote_inp {
         width: 100%;
+    }
+
+    .fac_card {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 80%;
+    }
+
+    .fac_sec {
+        margin-bottom: 1rem;
     }
 }

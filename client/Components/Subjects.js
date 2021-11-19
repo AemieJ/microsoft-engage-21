@@ -8,7 +8,7 @@ const Subjects = ({ subjects }) => {
             {subjects.map((subject) => {
                 return (
                     
-                        <Col key={subject.email}>  
+                        <Col key={subject.code}>  
                         <Card style={{ width: '18rem', borderRadius: '1.5rem' }}>
                 <Card.Header variant="top" className={styles.card_header}
                 ><b>{subject.subject} - {subject.code}</b></Card.Header>
