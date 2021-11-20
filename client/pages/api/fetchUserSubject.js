@@ -1,21 +1,19 @@
+const uri = 'http://localhost:4000'
+
 export default async (req, res) => {
-    const parsed = JSON.parse(req.body); // body will include the access token + email
-    // fake response will be replaced with calls to the server
+    let parsed = JSON.parse(req.body)
+    let requestOptions = {
+        method: 'GET',
+        headers: {
+            "Authorization": `Bearer ${parsed.accessToken}`
+        },
+        redirect: 'follow'
+    };
+
     try {
-        let data = [
-            {
-                "subject": "CNS",
-                "code": "CO304"
-            }, 
-            {
-                "subject": "DWDM",
-                "code": "CO306"
-            }, 
-            {
-                "subject": "SE",
-                "code": "CO302"
-            }, 
-        ]
+        const response = await fetch(`${uri}/api/classroom/`, requestOptions)
+        const data = await response.json()
+        console.log(data)
 
         res.status(200).json({ data: JSON.stringify(data), err: null})
     } catch (err) {

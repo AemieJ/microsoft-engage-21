@@ -1,8 +1,24 @@
+const uri = 'http://localhost:4000'
+
 export default async (req, res) => {
-    const parsed = JSON.parse(req.body);
-    // fake response will be replaced with calls to the server
+    let parsed = JSON.parse(req.body)
+    console.log(parsed.body)
+    let requestOptions = {
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${parsed.accessToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(parsed.body),
+        redirect: 'follow'
+    };
+
     try {
-        res.status(200).json({ data: "Successful creation", err: null})
+        const response = await fetch(`${uri}/api/classroom/`, requestOptions)
+        const data = await response.json()
+        if (data.err) res.status(200).json({ data: null, err: data.err})
+
+        res.status(200).json({ data: 'Successfully created the class', err: null})
     } catch (err) {
         res.status(500).json({ data: null, err: "Server Error"})
     }

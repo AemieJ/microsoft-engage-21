@@ -48,7 +48,6 @@ export default function Dashboard() {
                 method: "post", 
                 body: JSON.stringify({
                     accessToken: localStorage.getItem("accessToken"), 
-                    email: localStorage.getItem("email")
                 })
             });
             const {data, err} = await res.json();

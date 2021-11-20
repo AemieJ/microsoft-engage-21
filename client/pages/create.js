@@ -30,7 +30,6 @@ export default function Create() {
         } else {
             let obj = { name, code, description }
             let body = {
-                email: localStorage.getItem("email"),
                 accessToken: localStorage.getItem("accessToken"),
                 body: obj
             }

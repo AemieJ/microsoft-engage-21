@@ -11,7 +11,7 @@ const Subjects = ({ subjects }) => {
                         <Col key={subject.code}>  
                         <Card style={{ width: '18rem', borderRadius: '1.5rem' }}>
                 <Card.Header variant="top" className={styles.card_header}
-                ><b>{subject.subject} - {subject.code}</b></Card.Header>
+                ><b>{subject.name} - {subject.code}</b></Card.Header>
                         <Card.Body>
                             <Card.Body className={styles.card_body}>
                             Click the button to go the class, <b>choose your preferences and attend the classes</b> as per schedule.
