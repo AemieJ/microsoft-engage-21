@@ -8,6 +8,7 @@ import styles from '../styles/Auth.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
 
+// TODO: add meeting link attribute
 export default function Create() {
     const [name, setName] = useState('')
     const [code, setCode] = useState('')

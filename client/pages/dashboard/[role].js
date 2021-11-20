@@ -15,8 +15,8 @@ export default function Dashboard() {
     const [role, setRole] = useState(null)
     const [email, setEmail] = useState(null)
     const [token, setToken] = useState(null)
-    const [remote, setRemote] = useState(null)
-    const [person, setPerson] = useState(null)
+    const [remote, setRemote] = useState("")
+    const [person, setPerson] = useState("")
     const [subjects, setSubjects] = useState([])
     const [facSubs, setFacSubs] = useState([])
     const [date, setDate] = useState(new Date())
@@ -36,6 +36,8 @@ export default function Dashboard() {
           
           setRemote(parsed.remote)
           setPerson(parsed.in_person)
+          localStorage.setItem("remote", parsed.remote)
+          localStorage.setItem("in_person", parsed.in_person)
           setRole("student")
           setEmail(localStorage.getItem("email"))
           setToken(localStorage.getItem("accessToken"))
@@ -99,6 +101,7 @@ export default function Dashboard() {
             if (parsed.seat_code !== null) {
                 // TODO: change will take place once integration with backend is performed
                 setPerson(parsed.seat_code)
+                localStorage.setItem("in_person", parsed.seat_code)
             } else {
                 toast.notify('No available seat for this week', {
                     duration: 5,
@@ -113,6 +116,7 @@ export default function Dashboard() {
         let length = 6
         let code = Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
         setRemote(code)
+        localStorage.setItem("remote", code)
         let obj = {
             remote: code
         }
@@ -126,7 +130,6 @@ export default function Dashboard() {
         // TODO: call update user api
     }
 
-    console.log(role, facSubs)
     return (
         <>
         <div className={styles.title_sec}>
@@ -162,7 +165,7 @@ export default function Dashboard() {
                 disabled={true}
                 onChange={e => setRemote(e.target.value)} />
                 <Button
-                disabled={date.getDay() !== 5 || (remote !== null && remote !== "")}
+                disabled={date.getDay() !== 6 || (remote !== null && remote !== "")}
                 onClick={generateRemoteCode}
                 >Generate</Button>
             </InputGroup>
@@ -177,13 +180,13 @@ export default function Dashboard() {
                 disabled={true}
                 onChange={e => setPerson(e.target.value)} />
                 <Button
-                disabled={date.getDay() !== 5 || (person !== null && person !== "")}
+                disabled={date.getDay() !== 6 || (person !== null && person !== "")}
                 onClick={generateSeatCode}
                 >Generate</Button>
             </InputGroup>
         </div>
         {
-            date.getDay() !== 5 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
+            date.getDay() !== 6 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
             preferences are set and will be renewed on Saturday itself.</b></p> : <></>
         }
         <Subjects subjects={subjects} />

@@ -133,6 +133,28 @@
     border-color: #1D37C2 !important;
 }
 
+.btn_preference {
+    background: none !important;
+    border: none !important;
+    color: #fff !important;
+    text-decoration: underline;
+}
+
+.btn_preference:hover,
+.btn_preference:focus,
+.btn_preference:active {
+    color: #fff !important;
+}
+
+.btn_preference_submit,
+.btn_preference_submit:hover,
+.btn_preference_submit:focus,
+.btn_preference_submit:active {
+    margin-bottom: 1rem;
+    background-color: #212529 !important;
+    color: #fff !important;
+}
+
 @media (max-width: 991px) {
     .description,
     .danger_msg {

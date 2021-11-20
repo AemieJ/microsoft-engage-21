@@ -61,11 +61,12 @@ export default function Login() {
                     })
                 } else {
                     let parsed = JSON.parse(data)
-                    let accessToken = parsed.accessToken.token
+                    let accessToken = parsed.token
+                    let role = parsed.roles[0].toLowerCase()
                     localStorage.setItem("accessToken", accessToken)
                     localStorage.setItem("email", email)
                     localStorage.setItem("isLogged", 1)
-                    localStorage.setItem("role", parsed.role)
+                    localStorage.setItem("role", role)
                     toast.notify('Successful Login', {
                         duration: 5,
                         type: "success"

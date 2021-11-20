@@ -55,8 +55,9 @@ export default function Register() {
         } else {
             let valid = verifyData()
             if (valid && password === rePass) {
+                let is_faculty = (role === 'student' ? false : true)
                 let body = {
-                    name, email, gender, role, password
+                    name, email, password, is_faculty
                 }
 
                 const res = await fetch(`${server}/api/register`, {

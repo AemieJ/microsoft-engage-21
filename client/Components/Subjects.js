@@ -19,6 +19,7 @@ const Subjects = ({ subjects }) => {
                             <Button variant="primary"
                             onClick={(e) => {
                                 e.preventDefault()
+                                window.location.href = `/subject/${subject.code}`
                             }}>Class</Button>
                         </Card.Body>
                     </Card>

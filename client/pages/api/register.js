@@ -1,8 +1,22 @@
+const uri = 'http://localhost:4000'
+
 export default async (req, res) => {
-    const parsed = JSON.parse(req.body);
-    // fake response will be replaced with calls to the server
+    let requestOptions = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: req.body,
+        redirect: 'follow'
+      };
+    
     try {
+        const response = await fetch(`${uri}/api/auth/signup`, requestOptions)
+        const data = await response.json()
+        if (data.err) res.status(200).json({ data: null, err: data.err})
+        
         res.status(200).json({ data: "Successful registration", err: null})
+
     } catch (err) {
         res.status(500).json({ data: null, err: "Server Error"})
     }

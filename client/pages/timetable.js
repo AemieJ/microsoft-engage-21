@@ -94,7 +94,9 @@ export default function TimeTable() {
                         code,
                         day,
                         to: toArr,
-                        from: fromArr
+                        from: fromArr,
+                        toTime: to,
+                        fromTime: from
                     }
 
                     res = await fetch(`${server}/api/updateTimeTable`, {

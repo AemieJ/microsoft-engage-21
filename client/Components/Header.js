@@ -54,6 +54,11 @@ const Header = () => {
                         <Nav.Link className={styles.login_link}
                         onClick={() => {
                             localStorage.removeItem("isLogged")
+                            localStorage.removeItem("accessToken")
+                            localStorage.removeItem("email")
+                            localStorage.removeItem("remote")
+                            localStorage.removeItem("in_person")
+                            localStorage.removeItem("role")
                             window.location.href = "/"
                         }}>Logout</Nav.Link>
                 </Nav>

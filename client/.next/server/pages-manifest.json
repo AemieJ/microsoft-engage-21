@@ -2,7 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/checkCode": "pages/api/checkCode.js",
-  "/api/updateTimeTable": "pages/api/updateTimeTable.js",
-  "/timetable": "pages/timetable.js"
+  "/": "pages/index.js",
+  "/login": "pages/login.js",
+  "/api/login": "pages/api/login.js",
+  "/dashboard/[role]": "pages/dashboard/[role].js",
+  "/api/fetchUserSubject": "pages/api/fetchUserSubject.js",
+  "/api/fetchCode": "pages/api/fetchCode.js"
 }
