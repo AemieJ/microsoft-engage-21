@@ -155,6 +155,39 @@
     color: #fff !important;
 }
 
+.preferences_sec {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    color: #1d37c2;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px; 
+}
+
+.mode_sec_page {
+    background-color: #fff;
+    color: #1D37C2;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.mode_sec_title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.login_image {
+    height: 85% !important;
+  width: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  max-width: auto !important;
+  max-height: auto !important;
+}
+
 @media (max-width: 991px) {
     .description,
     .danger_msg {
@@ -174,5 +207,9 @@
 
     .fac_sec {
         margin-bottom: 1rem;
+    }
+
+    .mode_sec_page {
+        width: 100%;
     }
 }

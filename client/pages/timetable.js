@@ -89,7 +89,6 @@ export default function TimeTable() {
                 } else {
                     createDateArray()
                     let body = {
-                        email: localStorage.getItem("email"),
                         accessToken: localStorage.getItem("accessToken"),
                         code,
                         day,

@@ -2,6 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/api/fetchPreferences": "pages/api/fetchPreferences.js",
+  "/api/fetchSubject": "pages/api/fetchSubject.js",
+  "/api/login": "pages/api/login.js",
+  "/dashboard/[role]": "pages/dashboard/[role].js",
+  "/login": "pages/login.js",
+  "/": "pages/index.js",
   "/subject/[code]": "pages/subject/[code].js",
-  "/api/fetchSubject": "pages/api/fetchSubject.js"
+  "/api/fetchFacultySubject": "pages/api/fetchFacultySubject.js"
 }
