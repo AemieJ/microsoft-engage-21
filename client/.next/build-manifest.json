@@ -15,6 +15,11 @@
     "static/development/_middlewareManifest.js"
   ],
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -25,15 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/subject/[code]/[date]": [
+    "/dashboard/[role]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/subject/[code]/[date].js"
+      "static/chunks/pages/dashboard/[role].js"
     ],
-    "/timetable": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/timetable.js"
+      "static/chunks/pages/login.js"
+    ],
+    "/subject/[code]/[date]/preferences": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/subject/[code]/[date]/preferences.js"
     ]
   },
   "ampFirstPages": []

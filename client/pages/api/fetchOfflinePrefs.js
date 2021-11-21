@@ -5,9 +5,18 @@ export default async (req, res) => {
         let data = {
             count: 3, 
             users: [
-                "u18co091@coed.svnit.ac.in",
-                "u18co045@coed.svnit.ac.in",
-                "u18co066@coed.svnit.ac.in",
+                {
+                    name: "Yamini Kabra", 
+                    email: "u18co045@coed.svnit.ac.in"
+                },
+                {
+                    name: "Krunal Rank", 
+                    email: "u18co081@coed.svnit.ac.in"
+                },
+                {
+                    name: "Yukta Shah", 
+                    email: "u18co063@coed.svnit.ac.in"
+                }
             ]
         }
         res.status(200).json({ data: JSON.stringify(data), err: null})

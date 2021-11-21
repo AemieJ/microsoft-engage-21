@@ -45,9 +45,9 @@ a:focus,
   box-shadow: none !important;
 }
 
-.input-group-text {
+/* .input-group-text {
   margin-right: 1rem;
-}
+} */
 
 .form-check-input:checked {
   color: #a10404;

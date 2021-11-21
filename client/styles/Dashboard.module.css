@@ -230,6 +230,18 @@
     margin-bottom: 1rem;
 }
 
+.badge_name {
+    background: #1d37c2;
+    color: #fff;
+    border-color: #1d37c2;
+}
+
+.badge_val {
+    border-color: #1d37c2;
+    background: #fff;
+    color: #1d37c2;
+}
+
 @media (max-width: 991px) {
     .description,
     .danger_msg {

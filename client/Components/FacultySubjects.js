@@ -55,14 +55,27 @@ const FacultySubjects = ({ subjects }) => {
                                         }
                                         let pushDate = new Date(d.getTime());
                                         let date = pushDate.getDate() + '-' + (pushDate.getMonth() + 1) + '-' + pushDate.getFullYear()                                        
-                                        window.location.href = `/subject/${subject.code}/${date}`
+                                        window.location.href = `/subject/${subject.code}/${date}/preferences`
                                     }}
                                     >Weekly Preferences</Button>
                                     </Row>
                                 </div>
                                 <div className={styles.fac_sec}>
                                     <Row>
-                                    <Button className={styles.fac_btn}>Attendance</Button>
+                                    <Button className={styles.fac_btn}
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        let lastWeek = localStorage.getItem("lastWeek")
+                                        let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+                                        d.setUTCSeconds(lastWeek);
+                                        let given = week.indexOf(day)
+                                        while (d.getDay() !== given) {
+                                            d.setDate(d.getDate() + 1);
+                                        }
+                                        let pushDate = new Date(d.getTime());
+                                        let date = pushDate.getDate() + '-' + (pushDate.getMonth() + 1) + '-' + pushDate.getFullYear()                                        
+                                        window.location.href = `/subject/${subject.code}/${date}/attendance`
+                                    }}>Attendance</Button>
                                     </Row>
                                 </div>
                             </Col>
