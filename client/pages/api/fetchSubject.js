@@ -7,7 +7,7 @@ export default async (req, res) => {
             lastWeek: 1637384993,
             name: "CNS", 
             description: "CNS subject will help in understanding the various security and cipher based algorithm utilized for the secure transmission of data and communication",
-            days: ["Thursday", "Tuesday", "Saturday"], 
+            days: ["Thursday", "Tuesday", "Sunday"], 
             from: ['09:00', '10:30', '10:00'], 
             to: ['09:50', '11:20', '10:50']
         }

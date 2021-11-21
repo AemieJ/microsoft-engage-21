@@ -7,7 +7,7 @@ export default async (req, res) => {
             preferences: {
                 "Thursday": "Remote", 
                 "Tuesday": "Offline", 
-                "Saturday": "Offline"
+                "Sunday": "Remote"
             }
         }
 

@@ -40,7 +40,7 @@ export default function ModeAttend({ date, code, mode }) {
             {
                 mode === 'remote' ? 
                 <>
-                <Col sm={12} lg={true}>
+                <Col sm={12} lg={true} style={{ marginTop: "3rem" }}>
                     <div style={{ fontWeight: "600" }}>Enter the remote code</div>
                     <InputGroup style={{ marginBottom: "3rem"}}>
                     <FormControl 
@@ -55,7 +55,7 @@ export default function ModeAttend({ date, code, mode }) {
                     </InputGroup>
                 </Col>
                 </> : <>
-                <Col sm={12} lg={true}>
+                <Col sm={12} lg={true} style={{ marginTop: "3rem" }}>
                     <div style={{ fontWeight: "600" }}>Scan the code on your seat</div>
                     <Button
                     style = {{ width: "30%"}}
