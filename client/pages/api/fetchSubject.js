@@ -1,6 +1,8 @@
 export default async (req, res) => {
     const parsed = JSON.parse(req.body); // body will include the access token + email + subject code
     // fake response will be replaced with calls to the server
+
+    // TODO: response should be changed on server side
     try {
         let data = {
             code: "CO302",

@@ -13,7 +13,6 @@ export default async (req, res) => {
     try {
         const response = await fetch(`${uri}/api/classroom/`, requestOptions)
         const data = await response.json()
-        console.log(data)
 
         res.status(200).json({ data: JSON.stringify(data), err: null})
     } catch (err) {

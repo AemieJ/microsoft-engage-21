@@ -24,11 +24,13 @@ export default function Dashboard({ roleURL }) {
     const [resetModal, setResetModal] = useState(false)
     const [access, setAccess] = useState(true)
 
+    const seatArrangement = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3", "D1", "D2", "D3", "E1", "E2", "E3", "F1", "F2", "F3",]
+
     useEffect(() => {
         let item = Number(localStorage.getItem("lastWeek"))
         let today = new Date()
         let todayDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
-        if (today.getDay() === 6) {
+        if (today.getDay() === 0) {
             if (item !== 0) {
                 let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
                 d.setUTCSeconds(item);
@@ -52,18 +54,17 @@ export default function Dashboard({ roleURL }) {
         const fetchCode = async () => {
             const res = await fetch(`${server}/api/fetchCode`, {
                 method: "post",
-                body: JSON.stringify({
-                    accessToken: localStorage.getItem("accessToken"),
-                    email: localStorage.getItem("email")
-                })
+                body: localStorage.getItem("accessToken")
             });
             const { data, err } = await res.json();
-            let parsed = JSON.parse(data) // TODO: change when integration with backend is done
+            let parsed = JSON.parse(data) 
+            let remoteCode = parsed.remote_code === null ? "" : parsed.remote_code
+            let seatCode = parsed.seat === null ? "" : seatArrangement[parsed.seat - 1]
 
-            setRemote(parsed.remote)
-            setPerson(parsed.in_person)
-            localStorage.setItem("remote", parsed.remote)
-            localStorage.setItem("in_person", parsed.in_person)
+            setRemote(remoteCode)
+            setPerson(seatCode)
+            localStorage.setItem("remote", remoteCode)
+            localStorage.setItem("in_person", seatCode)
             setRole("student")
             setEmail(localStorage.getItem("email"))
             setToken(localStorage.getItem("accessToken"))
@@ -78,7 +79,7 @@ export default function Dashboard({ roleURL }) {
             });
             const { data, err } = await res.json();
             let parsed = JSON.parse(data)
-            setSubjects(parsed) // TODO: change when integration with backend is done
+            setSubjects(parsed) 
         }
 
         const fetchFacSubjects = async () => {
@@ -109,10 +110,7 @@ export default function Dashboard({ roleURL }) {
         e.preventDefault()
         const res = await fetch(`${server}/api/generateSeat`, {
             method: "post",
-            body: JSON.stringify({
-                accessToken: token,
-                email: email
-            })
+            body: token
         })
 
         const { data, err } = await res.json()
@@ -123,10 +121,9 @@ export default function Dashboard({ roleURL }) {
             })
         } else {
             let parsed = JSON.parse(data)
-            if (parsed.seat_code !== null) {
-                // TODO: change will take place once integration with backend is performed
-                setPerson(parsed.seat_code)
-                localStorage.setItem("in_person", parsed.seat_code)
+            if (parsed.seat !== null) {
+                setPerson(seatArrangement[parsed.seat - 1])
+                localStorage.setItem("in_person", seatArrangement[parsed.seat - 1])
             } else {
                 toast.notify('No available seat for this week', {
                     duration: 5,
@@ -140,19 +137,27 @@ export default function Dashboard({ roleURL }) {
         e.preventDefault()
         let length = 6
         let code = Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-        setRemote(code)
-        localStorage.setItem("remote", code)
-        let obj = {
-            remote: code
-        }
 
         let body = {
-            email: email,
             accessToken: token,
-            body: obj
+            code
         }
 
-        // TODO: call update user api
+        const res = await fetch(`${server}/api/generateRemote`, {
+            method: "POST",
+            body: JSON.stringify(body)
+        })
+
+        const { data, err } = await res.json()
+        if (err) {
+            toast.notify(err, {
+                duration: 5,
+                type: "error"
+            })
+        } else {
+            setRemote(code)
+            localStorage.setItem("remote", code)
+        }
     }
 
     return (

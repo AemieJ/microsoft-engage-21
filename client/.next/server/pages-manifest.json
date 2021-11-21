@@ -1,5 +1,9 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/dashboard/[role]": "pages/dashboard/[role].js",
+  "/api/fetchCode": "pages/api/fetchCode.js",
+  "/api/fetchUserSubject": "pages/api/fetchUserSubject.js",
+  "/api/reset": "pages/api/reset.js"
 }
