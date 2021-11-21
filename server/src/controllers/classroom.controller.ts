@@ -1,5 +1,4 @@
 import { RequestHandler, Request, Response } from "express";
-import ClassRoom from "../models/classroom.model";
 import { CreateClassRoomRequest } from "../routes/classroom.route";
 import {
   addUserToClassRoomIfNotExists,
@@ -9,6 +8,7 @@ import {
   getClassRoomByCode,
   getClassRoomById,
   getClassRoomsOfUser,
+  makeClassRoom,
 } from "../services/classroom.service";
 
 export const createClassRoom: RequestHandler = async (
@@ -19,7 +19,7 @@ export const createClassRoom: RequestHandler = async (
   >,
   res: Response
 ) => {
-  const { name, description, code } = req.body;
+  const { name, description, code, link } = req.body;
 
   const doesClassRoomExists = await doesClassRoomExistByCode(code);
 
@@ -27,11 +27,7 @@ export const createClassRoom: RequestHandler = async (
     return res.status(400).send({ err: "Classroom already exists" });
   }
 
-  const classroom = await ClassRoom.create({
-    name,
-    description,
-    code,
-  });
+  const classroom = await makeClassRoom(name, description, code, link);
 
   return res.status(201).send({ ...(await classroom.toDAO()) });
 };
@@ -94,6 +90,22 @@ export const getClassRoom: RequestHandler<{ id: string }> = async (
   }
 
   const classroom = await getClassRoomById(+id);
+
+  return res.status(200).send({ ...(await classroom.toDAO()) });
+};
+
+export const classRoomByCode: RequestHandler<{ code: string }> = async (
+  req: Request<{ code: string }>,
+  res: Response
+) => {
+  const { code } = req.params;
+  const classRoomExists = await doesClassRoomExistByCode(code);
+
+  if (!classRoomExists) {
+    return res.status(404).send({ err: "Classroom not found" });
+  }
+
+  const classroom = await getClassRoomByCode(code);
 
   return res.status(200).send({ ...(await classroom.toDAO()) });
 };

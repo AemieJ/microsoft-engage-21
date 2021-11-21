@@ -22,6 +22,8 @@ export const createStudent = async (
     auth_provider,
     email,
     password,
+    remote_code: null,
+    seat: null,
   });
   await user.addRole(student);
   return user;
@@ -41,6 +43,8 @@ export const createFaculty = async (
     auth_provider,
     email,
     password,
+    remote_code: null,
+    seat: null,
   });
   await user.addRole(faculty);
   return user;
@@ -54,4 +58,46 @@ export const getUserByEmail = async (email: string): Promise<User> => {
 
 export const getAllUsers = async (): Promise<User[]> => {
   return await User.findAll();
+};
+
+export const clearUserCodes = async (user: User): Promise<User> => {
+  user.remote_code = null;
+  user.seat = null;
+  return await user.save();
+};
+
+export const setUserRemoteCode = async (
+  user: User,
+  remote_code: string
+): Promise<User> => {
+  user.remote_code = remote_code;
+  return await user.save();
+};
+
+export const getAllSeats = async (): Promise<Set<number>> => {
+  const users = await getAllUsers();
+  const seats: Set<number> = new Set();
+
+  for (const user of users) {
+    if (user.seat) {
+      seats.add(user.seat);
+    }
+  }
+  return seats;
+};
+
+// Seats from 1 to 18
+// returns -1 if no seat is available
+// returns positive number if seat is available
+export const getAvailableSeat = async (): Promise<number> => {
+  const seats = await getAllSeats();
+  for (let i = 1; i <= 18; i++) {
+    if (!seats.has(i)) return i;
+  }
+  return -1;
+};
+
+export const setUserSeat = async (user: User, seat: number): Promise<User> => {
+  user.seat = seat;
+  return await user.save();
 };

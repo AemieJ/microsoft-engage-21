@@ -9,7 +9,7 @@ const DB_PORT = process.env.DB_PORT || "";
 
 // Database Connection
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
-  dialect: "mysql",
+  dialect: "postgres",
   host: DB_HOST,
   port: Number(DB_PORT),
 });

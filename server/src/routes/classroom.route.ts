@@ -2,12 +2,14 @@ import { Router } from "express";
 import Joi from "joi";
 import passport from "passport";
 import {
+  classRoomByCode,
   createClassRoom,
   deleteClassRoom,
   getClassRoom,
   getClassRooms,
   joinClassRoom,
 } from "../controllers/classroom.controller";
+import handlePassportError from "../middlewares/error.middleware";
 import hasRole from "../middlewares/role.middleware";
 import validate from "../middlewares/validate.middleware";
 import { RoleName } from "../models/role.model";
@@ -18,39 +20,50 @@ export interface CreateClassRoomRequest {
   name: string;
   description: string;
   code: string;
+  link: string;
 }
 
 export const createClassRoomSchema = Joi.object<CreateClassRoomRequest>({
   name: Joi.string().required(),
-  description: Joi.string(), // TODO: Change 1 -> description of classroom optional
+  description: Joi.string(),
   code: Joi.string().required(),
+  link: Joi.string().required(),
 });
 
 classRoomRouter.post(
   "/join/:code",
   passport.authenticate("jwt", { session: false, failWithError: true }),
-  joinClassRoom
+  joinClassRoom,
+  handlePassportError(401)
+);
+
+classRoomRouter.get(
+  "/code/:code",
+  passport.authenticate("jwt", { session: false, failWithError: true }),
+  classRoomByCode,
+  handlePassportError(401)
 );
 
 classRoomRouter.delete(
   "/:id",
   passport.authenticate("jwt", { session: false, failWithError: true }),
   hasRole(RoleName.FACULTY),
-  deleteClassRoom
+  deleteClassRoom,
+  handlePassportError(401)
 );
 
 classRoomRouter.get(
   "/:id",
   passport.authenticate("jwt", { session: false, failWithError: true }),
-  getClassRoom
+  getClassRoom,
+  handlePassportError(401)
 );
-
-// TODO: Change 2 -> get subject/classroom details by code
 
 classRoomRouter.get(
   "/",
   passport.authenticate("jwt", { session: false, failWithError: true }),
-  getClassRooms
+  getClassRooms,
+  handlePassportError(401)
 );
 
 classRoomRouter.post(
@@ -58,9 +71,8 @@ classRoomRouter.post(
   passport.authenticate("jwt", { session: false, failWithError: true }),
   hasRole(RoleName.FACULTY),
   validate(createClassRoomSchema),
-  createClassRoom
+  createClassRoom,
+  handlePassportError(401)
 );
-
-// TODO: Change 3 -> create class take input of meeting link as well (it's required)
 
 export default classRoomRouter;

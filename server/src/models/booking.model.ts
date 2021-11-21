@@ -6,7 +6,7 @@ import {
   Optional,
 } from "sequelize";
 import sequelize from "../db";
-import Lecture from "./lecture.room";
+import Lecture from "./lecture.model";
 import User from "./user.model";
 
 interface BookingAttributes {

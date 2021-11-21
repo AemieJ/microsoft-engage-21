@@ -9,16 +9,18 @@ export const doesClassRoomExistByCode = async (
   return false;
 };
 
-export const createClassRoom = async (
+export const makeClassRoom = async (
   name: string,
   description: string,
-  code: string
+  code: string,
+  link: string
 ): Promise<ClassRoom> => {
   // Assumes code does not exist
   const classroom = await ClassRoom.create({
     name,
     description,
     code,
+    link,
   });
   return classroom;
 };

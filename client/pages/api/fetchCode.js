@@ -2,6 +2,7 @@ export default async (req, res) => {
     const parsed = JSON.parse(req.body); // body will include the access token + email
     // fake response will be replaced with calls to the server
     try {
+        
         let data = {
                 remote: "",
                 in_person: ""

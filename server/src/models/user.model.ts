@@ -20,6 +20,8 @@ interface UserAttributes {
   email: string;
   password: string | null;
   auth_provider: string;
+  seat: number | null;
+  remote_code: string | null;
 }
 
 type UserCreationAttributes = Optional<UserAttributes, "id">;
@@ -33,6 +35,8 @@ class User
   public name!: string;
   public auth_provider!: string;
   public password!: string | null;
+  public seat!: number | null;
+  public remote_code!: string | null;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -67,6 +71,8 @@ class User
       email: this.email,
       auth_provider: this.auth_provider,
       roles,
+      seat: this.seat,
+      remote_code: this.remote_code,
     };
   }
 }
@@ -89,6 +95,14 @@ User.init(
       type: DataTypes.STRING,
     },
     password: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    seat: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    remote_code: {
       type: DataTypes.STRING,
       allowNull: true,
     },

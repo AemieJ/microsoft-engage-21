@@ -10,6 +10,7 @@ import profileRouter from "./routes/profile.route";
 // import userRouter from "./routes/user.route";
 import cors from "cors";
 import classRoomRouter from "./routes/classroom.route";
+import lectureRouter from "./routes/lecture.route";
 
 // Constants
 const IS_PRODUCTION = process.env.NODE_ENV == "production";
@@ -33,6 +34,7 @@ passport.use("jwt", jwtStrategy);
 app.use("/api/auth", authRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/classroom", classRoomRouter);
+app.use("/api/lecture", lectureRouter);
 
 app.get("/", async (_, res) => {
   res.send("Hello World!");

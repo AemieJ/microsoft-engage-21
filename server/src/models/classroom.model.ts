@@ -11,14 +11,15 @@ import {
 import { ClassRoomDAO } from "../dao/classroom.dao";
 import sequelize from "../db";
 import Booking from "./booking.model";
-import Lecture from "./lecture.room";
+import Lecture from "./lecture.model";
 import User from "./user.model";
 
 interface ClassRoomAttributes {
   id: number;
   name: string;
-  description: string;
+  description: string | null;
   code: string;
+  link: string;
 }
 
 type ClassRoomCreationAttributes = Optional<ClassRoomAttributes, "id">;
@@ -29,8 +30,9 @@ class ClassRoom
 {
   public id!: number;
   public name!: string;
-  public description!: string;
+  public description!: string | null;
   public code!: string;
+  public link!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -57,6 +59,7 @@ class ClassRoom
       name: this.name,
       description: this.description,
       code: this.code,
+      link: this.link,
       users,
     };
   }
@@ -74,10 +77,14 @@ ClassRoom.init(
     },
     description: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     code: {
       type: DataTypes.STRING,
       unique: true,
+    },
+    link: {
+      type: DataTypes.STRING,
     },
   },
   {
