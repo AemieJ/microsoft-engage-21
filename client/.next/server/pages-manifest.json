@@ -2,10 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/fetchSubject": "pages/api/fetchSubject.js",
-  "/api/fetchPreferences": "pages/api/fetchPreferences.js",
-  "/subject/[code]": "pages/subject/[code].js",
-  "/dashboard/[role]": "pages/dashboard/[role].js",
-  "/api/fetchCode": "pages/api/fetchCode.js",
-  "/api/fetchUserSubject": "pages/api/fetchUserSubject.js"
+  "/api/fetchOfflinePrefs": "pages/api/fetchOfflinePrefs.js",
+  "/api/fetchRemotePrefs": "pages/api/fetchRemotePrefs.js"
 }

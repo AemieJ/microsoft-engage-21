@@ -160,7 +160,9 @@ export default function Dashboard({ roleURL }) {
             <div className={styles.title_sec}>
                 <p className={styles.title}>Dashboard</p>
                 {
-                    role === "student" ? <Button onClick={(e) => {
+                    role === "student" ? <Button 
+                    disabled={!access}
+                    onClick={(e) => {
                         e.preventDefault()
                         // a modal popup 
                         setShowModal(true)

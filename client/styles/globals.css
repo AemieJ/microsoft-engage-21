@@ -65,3 +65,9 @@ a {
 input[type="time"]::-webkit-calendar-picker-indicator {
   display: none;
 }
+
+.btn-primary.active {
+  background-color: #1D37C2 !important;
+  color: #fff !important;
+  border-color: #1D37C2 !important;
+}

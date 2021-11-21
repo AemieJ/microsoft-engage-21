@@ -25,15 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/dashboard/[role]": [
+    "/subject/[code]/[date]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/dashboard/[role].js"
+      "static/chunks/pages/subject/[code]/[date].js"
     ],
-    "/subject/[code]": [
+    "/timetable": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/subject/[code].js"
+      "static/chunks/pages/timetable.js"
     ]
   },
   "ampFirstPages": []

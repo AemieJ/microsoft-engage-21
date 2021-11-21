@@ -4,12 +4,8 @@ export default async (req, res) => {
     try {
         let data = [
             {
-                subject: "CO304", 
-                days: ["Tuesday", "Thursday"]
-            },
-            {
-                subject: "CO305", 
-                days: ["Monday", "Wednesday", "Thursday"]
+                code: "CO305", 
+                days: ["Thursday", "Tuesday", "Sunday"]
             }
         ]
 
