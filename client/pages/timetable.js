@@ -27,9 +27,9 @@ export default function TimeTable() {
         setToArr([])
     }
 
-    const months = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const createDateArray = () => {
-        let given = months.indexOf(day)
+        let given = week.indexOf(day)
         var d = new Date(),
             year = d.getYear(),
             days = []
@@ -41,16 +41,24 @@ export default function TimeTable() {
 
         while (d.getYear() === year) {
             var pushDate = new Date(d.getTime());
-            days.push(pushDate.getDate() + '-' + (pushDate.getMonth() + 1) + '-' + pushDate.getFullYear());
+            days.push(pushDate.getDate() + '-' + (pushDate.getMonth()) + '-' + pushDate.getFullYear());
             d.setDate(d.getDate() + 7);
         }
 
         days.forEach((day) => {
-            fromArr.push(day + ' ' + from)
+            let splits = day.split('-')
+            let timeSplit = from.split(':')
+            let time = new Date(splits[2], splits[1], splits[0], timeSplit[0], timeSplit[1])
+            let epochs = time.getTime()
+            fromArr.push(epochs)
         })
 
         days.forEach((day) => {
-            toArr.push(day + ' ' + to)
+            let splits = day.split('-')
+            let timeSplit = to.split(':')
+            let time = new Date(splits[2], splits[1], splits[0], timeSplit[0], timeSplit[1])
+            let epochs = time.getTime()
+            toArr.push(epochs)
         })
 
         setFromArr(fromArr)
@@ -65,56 +73,33 @@ export default function TimeTable() {
                 type: "error"
             })
         } else {
-            let res = await fetch(`${server}/api/checkCode`, {
-                method: "post",
-                body: JSON.stringify({
-                    email: localStorage.getItem("email"),
-                    accessToken: localStorage.getItem("accessToken"),
-                    code
-                })
-            })
+            createDateArray()
+            let length = fromArr.length
+            let flag = false
+            let token = localStorage.getItem("accessToken")
+            for (let idx = 0; idx < length; ++idx) {
+                let from = fromArr[idx]
+                let to = toArr[idx]
 
-            let { data, err } = await res.json()
-            if (err) {
-                toast.notify(err, {
-                    duration: 5,
-                    type: "error"
+                let obj = { from, to, classRoomCode: code }
+                let body = {
+                    accessToken: token,
+                    body: obj
+                }
+
+                let res = await fetch(`${server}/api/updateTimeTable`, {
+                    method: "post",
+                    body: JSON.stringify(body)
                 })
-            } else {
-                if (!data) { 
-                    toast.notify('Class code isn\'t created under your name', {
+
+                let { data, err } = await res.json()
+                if (err) {
+                    flag = true
+                    toast.notify(err, {
                         duration: 5,
                         type: "error"
                     })
-                } else {
-                    createDateArray()
-                    let body = {
-                        accessToken: localStorage.getItem("accessToken"),
-                        code,
-                        day,
-                        to: toArr,
-                        from: fromArr,
-                        toTime: to,
-                        fromTime: from
-                    }
-
-                    res = await fetch(`${server}/api/updateTimeTable`, {
-                        method: "post", 
-                        body: JSON.stringify(body)
-                    })
-
-                    let data2 = await res.json()
-                    if (data2.err) {
-                        toast.notify(data2.err, {
-                            duration: 5,
-                            type: "error"
-                        })
-                    } else {
-                        toast.notify(data2.data, {
-                            duration: 5,
-                            type: "success"
-                        })
-                    }
+                    break
                 }
             }
         }
@@ -124,16 +109,16 @@ export default function TimeTable() {
 
     const timeToMins = (time) => {
         var b = time.split(':');
-        return b[0]*60 + +b[1];
+        return b[0] * 60 + +b[1];
     }
-    
+
     const timeFromMins = (mins) => {
-        const z = (n) => {return (n<10? '0':'') + n;}
-        var h = (mins/60 |0) % 24;
+        const z = (n) => { return (n < 10 ? '0' : '') + n; }
+        var h = (mins / 60 | 0) % 24;
         var m = mins % 60;
         return z(h) + ':' + z(m);
     }
-      
+
     const addTimes = (t0, t1) => {
         return timeFromMins(timeToMins(t0) + timeToMins(t1));
     }
@@ -166,63 +151,64 @@ export default function TimeTable() {
                         </Form.Group>
 
                         <div className={styles.time_sec}>
-                        <Form.Group className={styles.time_sec_item}>
-                        <Form.Label><b>Scheduling Day</b></Form.Label>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                {day}
-                            </Dropdown.Toggle>
+                            <Form.Group className={styles.time_sec_item}>
+                                <Form.Label><b>Scheduling Day</b></Form.Label>
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                        {day}
+                                    </Dropdown.Toggle>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item
-                                onClick={() => {setDay('Monday')}}>Monday</Dropdown.Item>
-                                <Dropdown.Item
-                                onClick={() => {setDay('Tuesday')}}>Tuesday</Dropdown.Item>
-                                <Dropdown.Item
-                                onClick={() => {setDay('Wednesday')}}>Wednesday</Dropdown.Item>
-                                <Dropdown.Item
-                                onClick={() => {setDay('Thursday')}}>Thursday</Dropdown.Item>
-                                <Dropdown.Item
-                                onClick={() => {setDay('Friday')}}>Friday</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        </Form.Group>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item
+                                            onClick={() => { setDay('Monday') }}>Monday</Dropdown.Item>
+                                        <Dropdown.Item
+                                            onClick={() => { setDay('Tuesday') }}>Tuesday</Dropdown.Item>
+                                        <Dropdown.Item
+                                            onClick={() => { setDay('Wednesday') }}>Wednesday</Dropdown.Item>
+                                        <Dropdown.Item
+                                            onClick={() => { setDay('Thursday') }}>Thursday</Dropdown.Item>
+                                        <Dropdown.Item
+                                            onClick={() => { setDay('Friday') }}>Friday</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Form.Group>
 
-                        <Form.Group className={styles.time_sec_item}>
-                        <Form.Label><b>Scheduling Time (From)</b></Form.Label>
-                        <Form.Control
-                                type="time"
-                                required
-                                className={`${styles.form_control}`}
-                                value={from}
-                                onChange={(e) => { setFrom(e.target.value)
-                                let time = addTimes(e.target.value, '00:50')
-                                setTo(time)
-                                }} />
-                        </Form.Group>
+                            <Form.Group className={styles.time_sec_item}>
+                                <Form.Label><b>Scheduling Time (From)</b></Form.Label>
+                                <Form.Control
+                                    type="time"
+                                    required
+                                    className={`${styles.form_control}`}
+                                    value={from}
+                                    onChange={(e) => {
+                                        setFrom(e.target.value)
+                                        let time = addTimes(e.target.value, '00:50')
+                                        setTo(time)
+                                    }} />
+                            </Form.Group>
 
-                        <Form.Group className={styles.time_sec_item}>
-                        <Form.Label><b>Scheduling Time (To)</b></Form.Label>
-                        <Form.Control
-                                type="time"
-                                required
-                                className={styles.form_control}
-                                value={to}
-                                disabled={true}
-                                onChange={(e) => { setTo(e.target.value) }} />
-                        </Form.Group>
+                            <Form.Group className={styles.time_sec_item}>
+                                <Form.Label><b>Scheduling Time (To)</b></Form.Label>
+                                <Form.Control
+                                    type="time"
+                                    required
+                                    className={styles.form_control}
+                                    value={to}
+                                    disabled={true}
+                                    onChange={(e) => { setTo(e.target.value) }} />
+                            </Form.Group>
                         </div>
 
                         <Form.Group style={{ display: "flex", marginTop: "2rem" }}>
-                        <Form.Check 
+                            <Form.Check
                                 type="checkbox"
                                 id={`default-warn`}
                                 className={styles.check_warn}
                                 checked={check}
                                 onClick={() => setChecked(!check)}
                             />
-                        <Form.Label className={styles.check_alert}>
-                            <b>This setting will be for the entire semeseter and the 
+                            <Form.Label className={styles.check_alert}>
+                                <b>This setting will be for the entire semeseter and the
                             configuration {"can't"} be changed.</b></Form.Label>
                         </Form.Group>
 
