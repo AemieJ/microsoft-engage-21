@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-qr-reader": "^2.2.1"
+  }
+}
