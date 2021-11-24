@@ -5,7 +5,9 @@ export default async (req, res) => {
         let data = [
             {
                 code: "CO305", 
-                days: ["Thursday", "Tuesday", "Sunday"]
+                days: ["Wednesday", "Tuesday"],
+                from: [ '10:20', '9:30' ],
+                to: [ '11:10', '10:20' ]
             }
         ]
 

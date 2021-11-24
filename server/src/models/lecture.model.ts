@@ -41,6 +41,11 @@ class Lecture
   public countLectures!: HasManyCountAssociationsMixin;
   public removeLecture!: HasManyRemoveAssociationMixin<Lecture, number>;
 
+  public getBookings!: HasManyGetAssociationsMixin<Booking>;
+  public addBooking!: HasManyAddAssociationMixin<Booking, number>;
+  public countBookings!: HasManyCountAssociationsMixin;
+  public removeBooking!: HasManyRemoveAssociationMixin<Booking, number>;
+
   public readonly classroom?: ClassRoom;
   public readonly bookings?: Booking[];
 

@@ -5,6 +5,7 @@ import {
   Model,
   Optional,
 } from "sequelize";
+import { BookingDAO } from "../dao/booking.dao";
 import sequelize from "../db";
 import Lecture from "./lecture.model";
 import User from "./user.model";
@@ -36,6 +37,20 @@ class Booking
 
   public readonly lecture?: Lecture;
   public readonly user?: User;
+
+  public async toDAO(): Promise<BookingDAO> {
+    const lecture = await this.getLecture();
+    const user = await this.getUser();
+    const lectureDAO = await lecture.toDAO();
+    const userDAO = await user.toDAO();
+    return {
+      id: this.id,
+      mode: this.mode,
+      attended: this.attended,
+      lecture: lectureDAO,
+      user: userDAO,
+    };
+  }
 }
 
 Booking.init(

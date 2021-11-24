@@ -30,10 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/dashboard/[role].js"
     ],
-    "/subject/[code]": [
+    "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/subject/[code].js"
+      "static/chunks/pages/login.js"
+    ],
+    "/subject/[code]/[date]/preferences": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/subject/[code]/[date]/preferences.js"
     ]
   },
   "ampFirstPages": []

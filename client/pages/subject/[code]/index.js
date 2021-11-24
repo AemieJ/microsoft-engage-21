@@ -15,6 +15,7 @@ export default function SubjectStudent({ code }) {
     const [dates, setDate] = useState([])
     const [to, setTo] = useState([])
     const [from, setFrom] = useState([])
+    const [lectureId, setLecID] = useState([])
     const [tableData, setTable] = useState([])
     const [err, setErr] = useState(false)
     const [prefAdded, setPrefAdded] = useState(false)
@@ -90,6 +91,7 @@ export default function SubjectStudent({ code }) {
                 setDays(parsed.days)
                 setFrom(parsed.from)
                 setTo(parsed.to)
+                setLecID(parsed.lectureID)
                 setSubject(parsed.name)
                 setDescrip(parsed.description)
             }
@@ -136,36 +138,45 @@ export default function SubjectStudent({ code }) {
         e.preventDefault()
         let obj = []
         tableData.forEach((data) => {
+            let fromTime = data[1]
+            let idx = from.indexOf(fromTime)
+            let id = lectureId[idx]
             let inner = {
-                date: data[3],
+                lectureId: Number(id),
                 mode: data[4]
             }
             obj.push(inner)
         })
 
-        let body = {
-            accessToken: localStorage.getItem("accessToken"),
-            body: obj
-        }
+        let length = obj.length
+        let token = localStorage.getItem("accessToken")
+        for (let i = 0; i < length; ++i) {
+            let inner = obj[i]
+            let body = {
+                accessToken: token,
+                body: inner
+            }
 
-        const res = await fetch(`${server}/api/insertPreferences`, {
-            method: "POST",
-            body: JSON.stringify(body)
-        })
-
-        const { data, err } = await res.json()
-        if (err) {
-            toast.notify(err, {
-                duration: 5,
-                type: "error"
-            })
-        } else {
-            toast.notify('Preferences have been successfully added', {
-                duration: 5,
-                type: "success"
+            let res = await fetch(`${server}/api/insertPreferences`, {
+                method: "POST",
+                body: JSON.stringify(body)
             })
 
-            setPrefAdded(true)
+            let { data, err } = await res.json()
+            if (err) {
+                toast.notify(err, {
+                    duration: 5,
+                    type: "error"
+                })
+                setPrefAdded(false)
+                break
+            } else {
+                toast.notify(`Preference ${i + 1} has been added`, {
+                    duration: 3, 
+                    type: "success"
+                })
+                setPrefAdded(true)
+            }
         }
 
     }

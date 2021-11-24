@@ -16,3 +16,16 @@ export const getLecturesByClassRoom = async (
 ): Promise<Lecture[]> => {
   return await classRoom.getLectures();
 };
+
+export const doesLectureExistsById = async (id: number): Promise<boolean> => {
+  const lecture = await Lecture.findOne({ where: { id } });
+  return !!lecture;
+};
+
+export const getLectureById = async (id: number): Promise<Lecture> => {
+  const lecture = await Lecture.findOne({ where: { id } });
+  if (!lecture) {
+    throw new Error("Lecture not found");
+  }
+  return lecture;
+};

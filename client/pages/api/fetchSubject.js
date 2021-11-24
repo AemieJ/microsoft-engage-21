@@ -20,11 +20,14 @@ export default async (req, res) => {
         let days = []
         let from = []
         let to = []
+        let lectureID = []
         for (let idx = 0; idx < length; ++idx) {
             let dateFrom = new Date(0), dateTo = new Date(0)
             dateFrom.setUTCMilliseconds(data2[idx].from)
             dateTo.setUTCMilliseconds(data2[idx].to)
+            let id = data2[idx].id
             if (!days.includes(week[dateFrom.getDay()])) {
+                lectureID.push(id)
                 days.push(week[dateFrom.getDay()])
                 let time = `${dateFrom.getHours()}:${dateFrom.getMinutes()}`
                 from.push(time)
@@ -37,7 +40,7 @@ export default async (req, res) => {
             name: data1.name,
             description: data1.description,
             code: data1.code,
-            days, from, to
+            days, from, to, lectureID
         }
 
         console.log(data)

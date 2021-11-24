@@ -1,33 +1,34 @@
+const uri = 'http://localhost:4000'
+
 export default async (req, res) => {
-    const parsed = JSON.parse(req.body); // body => access token, code, date
-    // fake response will be replaced with calls to the server
+    let parsed = JSON.parse(req.body)
+    let requestOptions = {
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${parsed.accessToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(parsed.body),
+        redirect: 'follow'
+    };
+
     try {
-        let data = {
-            count: 5, 
-            users: [
-                {
-                    name: "Aemie Jariwala", 
-                    email: "u18co059@coed.svnit.ac.in"
-                },
-                {
-                    name: "Sahil Bondre", 
-                    email: "u18co021@coed.svnit.ac.in"
-                },
-                {
-                    name: "Surya Teja", 
-                    email: "u18co022@coed.svnit.ac.in"
-                },
-                {
-                    name: "NNSS Daivik", 
-                    email: "u18co028@coed.svnit.ac.in"
-                },
-                {
-                    name: "Atul Bharti", 
-                    email: "u18co096@coed.svnit.ac.in"
-                }
-            ]
+        const response = await fetch(`${uri}/api/booking/preferences`, requestOptions)
+        const data = await response.json()
+        if (data.err) res.status(200).json({ data: null, err: data.err })
+        let count = data.length
+        let remote = data.filter(obj => obj.mode === 'Remote')
+        let remoteUsers = remote.map((detail) => {
+            let obj = { name: detail.user.name, email: detail.user.email }
+            return (obj)
+        })
+
+        let finalData = {
+            count,
+            users: remoteUsers
         }
-        res.status(200).json({ data: JSON.stringify(data), err: null})
+
+        res.status(200).json({ data: JSON.stringify(finalData), err: null})
     } catch (err) {
         res.status(500).json({ data: null, err: "Server Error"})
     }

@@ -1,25 +1,34 @@
+const uri = 'http://localhost:4000'
+
 export default async (req, res) => {
-    const parsed = JSON.parse(req.body); // body => access token, code, date
-    // fake response will be replaced with calls to the server
+    let parsed = JSON.parse(req.body)
+    let requestOptions = {
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${parsed.accessToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(parsed.body),
+        redirect: 'follow'
+    };
+
     try {
-        let data = {
-            count: 3, 
-            users: [
-                {
-                    name: "Yamini Kabra", 
-                    email: "u18co045@coed.svnit.ac.in"
-                },
-                {
-                    name: "Krunal Rank", 
-                    email: "u18co081@coed.svnit.ac.in"
-                },
-                {
-                    name: "Yukta Shah", 
-                    email: "u18co063@coed.svnit.ac.in"
-                }
-            ]
+        const response = await fetch(`${uri}/api/booking/preferences`, requestOptions)
+        const data = await response.json()
+        if (data.err) res.status(200).json({ data: null, err: data.err })
+        let count = data.length
+        let offline = data.filter(obj => obj.mode === 'Offline')
+        let offlineUsers = offline.map((detail) => {
+            let obj = { name: detail.user.name, email: detail.user.email }
+            return (obj)
+        })
+
+        let finalData = {
+            count,
+            users: offlineUsers
         }
-        res.status(200).json({ data: JSON.stringify(data), err: null})
+
+        res.status(200).json({ data: JSON.stringify(finalData), err: null})
     } catch (err) {
         res.status(500).json({ data: null, err: "Server Error"})
     }

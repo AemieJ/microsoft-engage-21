@@ -11,6 +11,7 @@ import profileRouter from "./routes/profile.route";
 import cors from "cors";
 import classRoomRouter from "./routes/classroom.route";
 import lectureRouter from "./routes/lecture.route";
+import bookingRouter from "./routes/booking.route";
 
 // Constants
 const IS_PRODUCTION = process.env.NODE_ENV == "production";
@@ -35,6 +36,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/classroom", classRoomRouter);
 app.use("/api/lecture", lectureRouter);
+app.use("/api/booking", bookingRouter);
 
 app.get("/", async (_, res) => {
   res.send("Hello World!");
