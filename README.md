@@ -10,6 +10,10 @@ This feature that allows students to submit weekly preferences for attending cla
 4. For the in-person opted students,  a student arrives at time t1 for a s   ubject, and when arrives and moves to its respective seat, needs to scan a QR code on the seat. If this QR code seat_no matches with the respective student seat_no then the status in the dashboard of the subject faculty changes to attending for the student only if the time at which the request is sent and the starting time of the subject class is <= 10 min. In this manner, automatic attendance for the in-person student is done for each subject. 
 5. For the remote opted students, a google meet link is provided once the student enters the meet, the time is recorded on the time of entering for the student and the status has been changed to attending if a student enters the meet link in the first 10 min of the subject class. 
 
+## Deployment 
+1. Client side - Vercel (https://microsoft-engage-21.vercel.app/)
+2. Server side - EC2 (http://ec2-13-232-90-241.ap-south-1.compute.amazonaws.com:4000)
+
 ## Client Side
 
 ### Wireframe prototype link: 
