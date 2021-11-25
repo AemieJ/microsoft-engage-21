@@ -10,6 +10,11 @@ import {
   getClassRoomsOfUser,
   makeClassRoom,
 } from "../services/classroom.service";
+import {
+  doesUserExistByEmail,
+  getClassRoomsOfFacultyUser,
+  getUserByEmail,
+} from "../services/user.service";
 
 export const createClassRoom: RequestHandler = async (
   req: Request<
@@ -20,6 +25,7 @@ export const createClassRoom: RequestHandler = async (
   res: Response
 ) => {
   const { name, description, code, link } = req.body;
+  const user = req.user;
 
   const doesClassRoomExists = await doesClassRoomExistByCode(code);
 
@@ -27,7 +33,7 @@ export const createClassRoom: RequestHandler = async (
     return res.status(400).send({ err: "Classroom already exists" });
   }
 
-  const classroom = await makeClassRoom(name, description, code, link);
+  const classroom = await makeClassRoom(name, description, code, link, user);
 
   return res.status(201).send({ ...(await classroom.toDAO()) });
 };
@@ -108,4 +114,27 @@ export const classRoomByCode: RequestHandler<{ code: string }> = async (
   const classroom = await getClassRoomByCode(code);
 
   return res.status(200).send({ ...(await classroom.toDAO()) });
+};
+
+export const getClassRoomsOfFaculty: RequestHandler<{ email: string }> = async (
+  req: Request<{ email: string }>,
+  res: Response
+) => {
+  const { email } = req.params;
+  const userExists = await doesUserExistByEmail(email);
+
+  if (!userExists) {
+    return res.status(404).send({ err: "User not found" });
+  }
+
+  const user = await getUserByEmail(email);
+  const classRooms = await getClassRoomsOfFacultyUser(user);
+
+  return res
+    .status(200)
+    .send(
+      await Promise.all(
+        classRooms.map(async (classRoom) => await classRoom.toDAO())
+      )
+    );
 };

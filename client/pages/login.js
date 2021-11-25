@@ -71,7 +71,7 @@ export default function Login() {
                         duration: 5,
                         type: "success"
                     })
-                    setTimeout(window.location.href = `/dashboard/${parsed.role}`, 8000)
+                    setTimeout(window.location.href = `/dashboard/${role}`, 8000)
                 }
             } else {
                 toast.notify('Data filled is invalid', {

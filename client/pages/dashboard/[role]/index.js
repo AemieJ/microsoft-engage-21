@@ -22,6 +22,7 @@ export default function Dashboard({ roleURL }) {
     const [date, setDate] = useState(new Date())
     const [showModal, setShowModal] = useState(false)
     const [resetModal, setResetModal] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [access, setAccess] = useState(true)
 
     const seatArrangement = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3", "D1", "D2", "D3", "E1", "E2", "E3", "F1", "F2", "F3",]
@@ -83,16 +84,19 @@ export default function Dashboard({ roleURL }) {
         }
 
         const fetchFacSubjects = async () => {
+            setLoading(true)
             const res = await fetch(`${server}/api/fetchFacultySubject`, {
                 method: "post",
                 body: JSON.stringify({
                     accessToken: localStorage.getItem("accessToken"),
-                    email: localStorage.getItem("email")
+                    email: localStorage.getItem("email"),
+                    lastWeek: localStorage.getItem("lastWeek")
                 })
             });
             const { data, err } = await res.json();
+            setLoading(false)
             let parsed = JSON.parse(data)
-            setFacSubs(parsed) // TODO: change when integration with backend is done
+            setFacSubs(parsed) 
             setRole("faculty")
             setEmail(localStorage.getItem("email"))
             setToken(localStorage.getItem("accessToken"))
@@ -162,6 +166,13 @@ export default function Dashboard({ roleURL }) {
 
     return (
         <>
+        {
+            loading ? <>
+            <div className={styles.title_sec}>
+                            <p className={styles.title}>Loading 🥺</p>
+                        </div>
+                <p className={styles.description}><b>The data is still being fetch, please be patient!</b></p>
+            </> : <>
             <div className={styles.title_sec}>
                 <p className={styles.title}>Dashboard</p>
                 {
@@ -240,6 +251,9 @@ export default function Dashboard({ roleURL }) {
             }
 
             <ToastContainer />
+            </>
+        }
+            
         </>
     )
 }

@@ -59,6 +59,8 @@ const Header = () => {
                             localStorage.removeItem("remote")
                             localStorage.removeItem("in_person")
                             localStorage.removeItem("role")
+                            localStorage.removeItem("from")
+                            localStorage.removeItem("to")
                             window.location.href = "/"
                         }}>Logout</Nav.Link>
                 </Nav>

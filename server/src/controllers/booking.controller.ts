@@ -45,7 +45,7 @@ export const getPreferences: RequestHandler = async (
   const { from, subjectCode, to } = req.body;
   const bookings = await getAllPreferences(+from, +to, subjectCode);
 
-  return res
+  res
     .status(200)
     .send(
       await Promise.all(bookings.map(async (booking) => await booking.toDAO()))

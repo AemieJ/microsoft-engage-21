@@ -7,6 +7,7 @@ import {
   deleteClassRoom,
   getClassRoom,
   getClassRooms,
+  getClassRoomsOfFaculty,
   joinClassRoom,
 } from "../controllers/classroom.controller";
 import handlePassportError from "../middlewares/error.middleware";
@@ -41,6 +42,13 @@ classRoomRouter.get(
   "/code/:code",
   passport.authenticate("jwt", { session: false, failWithError: true }),
   classRoomByCode,
+  handlePassportError(401)
+);
+
+classRoomRouter.get(
+  "/faculty/:email",
+  passport.authenticate("jwt", { session: false, failWithError: true }),
+  getClassRoomsOfFaculty,
   handlePassportError(401)
 );
 

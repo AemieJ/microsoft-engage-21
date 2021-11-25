@@ -13,7 +13,8 @@ export const makeClassRoom = async (
   name: string,
   description: string,
   code: string,
-  link: string
+  link: string,
+  faculty: User
 ): Promise<ClassRoom> => {
   // Assumes code does not exist
   const classroom = await ClassRoom.create({
@@ -22,6 +23,9 @@ export const makeClassRoom = async (
     code,
     link,
   });
+
+  await classroom.addUser(faculty);
+
   return classroom;
 };
 

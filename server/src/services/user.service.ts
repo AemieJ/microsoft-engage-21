@@ -1,3 +1,4 @@
+import ClassRoom from "../models/classroom.model";
 import Role, { RoleName } from "../models/role.model";
 import User from "../models/user.model";
 import { getRoleByNameOrCreate } from "./role.service";
@@ -100,4 +101,10 @@ export const getAvailableSeat = async (): Promise<number> => {
 export const setUserSeat = async (user: User, seat: number): Promise<User> => {
   user.seat = seat;
   return await user.save();
+};
+
+export const getClassRoomsOfFacultyUser = async (
+  user: User
+): Promise<ClassRoom[]> => {
+  return await user.getClassRooms();
 };

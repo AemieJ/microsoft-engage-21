@@ -1,5 +1,8 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/subject/[code]/[date]/preferences": "pages/subject/[code]/[date]/preferences.js",
+  "/api/fetchRemotePrefs": "pages/api/fetchRemotePrefs.js",
+  "/api/fetchOfflinePrefs": "pages/api/fetchOfflinePrefs.js"
 }

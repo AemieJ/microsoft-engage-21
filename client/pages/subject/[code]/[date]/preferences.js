@@ -17,11 +17,25 @@ export default function Prefs({ date, code }) {
     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     
     useEffect(() => {
-        const fetchRemotePrefs = async () => {
+        let from = localStorage.getItem("from")
+        let to = localStorage.getItem("to")
+        let splits = date.split('-')
+        let timeSplit = from.split(':')
+        let fromEpoch = new Date(splits[2], (Number(splits[1]) - 1).toString(), splits[0], timeSplit[0], timeSplit[1]).getTime()
+        timeSplit = to.split(':')
+        let toEpoch = new Date(splits[2], (Number(splits[1]) - 1).toString(), splits[0], timeSplit[0], timeSplit[1]).getTime()
+
+        const fetchRemotePreference = async () => {
+            let obj = {
+                subjectCode: code,
+                from: fromEpoch.toString(),
+                to: toEpoch.toString()
+            }
             let body = {
                 accessToken: localStorage.getItem("accessToken"),
-                code, date
+                body: obj
             }
+
             const res = await fetch(`${server}/api/fetchRemotePrefs`, {
                 method: "POST",
                 body: JSON.stringify(body)
@@ -41,10 +55,16 @@ export default function Prefs({ date, code }) {
         }
 
         const fetchOfflinePrefs = async () => {
+            let obj = {
+                subjectCode: code,
+                from: fromEpoch.toString(),
+                to: toEpoch.toString()
+            }
             let body = {
                 accessToken: localStorage.getItem("accessToken"),
-                code, date
+                body: obj
             }
+            
             const res = await fetch(`${server}/api/fetchOfflinePrefs`, {
                 method: "POST",
                 body: JSON.stringify(body)
@@ -63,7 +83,7 @@ export default function Prefs({ date, code }) {
             }
         }
 
-        fetchRemotePrefs()
+        fetchRemotePreference()
         fetchOfflinePrefs()
     }, [])
 

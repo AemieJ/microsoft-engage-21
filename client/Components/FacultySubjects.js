@@ -30,7 +30,7 @@ const FacultySubjects = ({ subjects }) => {
         <Row xs={1} md={1} lg={1} className={`g-4 ${styles.main}`}>
             {subjects.map((subject) => {
                 return (
-                    subject.days.map((day) => {
+                    subject.days.map((day, idx) => {
                         return (
                             <Col key={`${subject.code}-${day}`} className={styles.fac_card}>
                                 <div className={styles.fac_sec}>
@@ -42,10 +42,20 @@ const FacultySubjects = ({ subjects }) => {
                                     <Row className={styles.fac_sec_description}>{day}</Row>
                                 </div>
                                 <div className={styles.fac_sec}>
+                                    <Row className={styles.fac_sec_title}>Starting Time</Row>
+                                    <Row className={styles.fac_sec_description}>{subject.from[idx]}</Row>
+                                </div>
+                                <div className={styles.fac_sec}>
+                                    <Row className={styles.fac_sec_title}>Ending Time</Row>
+                                    <Row className={styles.fac_sec_description}>{subject.to[idx]}</Row>
+                                </div>
+                                <div className={styles.fac_sec}>
                                     <Row>
                                     <Button className={styles.fac_btn}
                                     onClick={(e) => {
                                         e.preventDefault()
+                                        localStorage.setItem("from", subject.from[idx])
+                                        localStorage.setItem("to", subject.to[idx])
                                         let lastWeek = localStorage.getItem("lastWeek")
                                         let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
                                         d.setUTCSeconds(lastWeek);
@@ -60,7 +70,7 @@ const FacultySubjects = ({ subjects }) => {
                                     >Weekly Preferences</Button>
                                     </Row>
                                 </div>
-                                <div className={styles.fac_sec}>
+                                {/* <div className={styles.fac_sec}>
                                     <Row>
                                     <Button className={styles.fac_btn}
                                     onClick={(e) => {
@@ -77,7 +87,7 @@ const FacultySubjects = ({ subjects }) => {
                                         window.location.href = `/subject/${subject.code}/${date}/attendance`
                                     }}>Attendance</Button>
                                     </Row>
-                                </div>
+                                </div> */}
                             </Col>
                         )
                     })
