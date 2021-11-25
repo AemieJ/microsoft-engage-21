@@ -49,7 +49,8 @@ const FacultySubjects = ({ subjects }) => {
                                     <Row className={styles.fac_sec_title}>Ending Time</Row>
                                     <Row className={styles.fac_sec_description}>{subject.to[idx]}</Row>
                                 </div>
-                                <div className={styles.fac_sec}>
+                                <div className={styles.fac_sec}
+                                style={{ marginLeft: "0", marginRight: "1rem" }}>
                                     <Row>
                                     <Button className={styles.fac_btn}
                                     onClick={(e) => {
