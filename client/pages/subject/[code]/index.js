@@ -219,7 +219,7 @@ export default function SubjectStudent({ code }) {
                                             {
                                                 tableData.map((tableRow, idx) => {
                                                     return (
-                                                        <tr>
+                                                        <tr key={tableRow[3]}>
                                                             <td>{tableRow[3]}</td>
                                                             <td>{tableRow[0]}</td>
                                                             <td>{tableRow[1]}</td>

@@ -16,7 +16,7 @@ const Footer = () => {
                     </span>
                 </a> */}
                 <p>
-                    Created with ❣️ by Aemie Jariwala for Microsoft Engage'21
+                    Created with ❣️ by Aemie Jariwala for {"Microsoft Engage'21"}
                 </p>
             </footer>
         </div>

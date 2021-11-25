@@ -136,7 +136,8 @@ export default function Prefs({ date, code }) {
                     {
                         remoteUsers.map((user, idx) => {
                             return (
-                            <div className={styles.user_pref}>{idx + 1}. {user.name} - {user.email}</div>
+                            <div className={styles.user_pref}
+                            key={user.email}>{idx + 1}. {user.name} - {user.email}</div>
                             )
                         })
                     }
@@ -144,7 +145,8 @@ export default function Prefs({ date, code }) {
                     {
                         offlineUsers.map((user, idx) => {
                             return (
-                            <div className={styles.user_pref}>{idx + 1}. {user.name} - {user.email}</div>
+                            <div className={styles.user_pref}
+                            key={user.email}>{idx + 1}. {user.name} - {user.email}</div>
                             )
                         })
                     }

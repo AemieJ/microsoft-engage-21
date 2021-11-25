@@ -26,7 +26,7 @@ export default function Home() {
 
           <a href="#" className={styles.card}>
             <h2>Why? &rarr;</h2>
-            <p>'Cause a student should be given the choice to study remote or in-person.
+            <p>{"'Cause"} a student should be given the choice to study remote or in-person.
               On top of it, the faculty {"shouldn't"} be bothered with attendance and should be automated.
             </p>
           </a>
@@ -37,7 +37,7 @@ export default function Home() {
           >
             <h2>For who? &rarr;</h2>
             <p>This is a platform for the students and faculties. 
-              Use it to the platform's maximum potential! 😃</p>
+              Use it to the {"platform's"} maximum potential! 😃</p>
           </a>
         </div>
       </main>
