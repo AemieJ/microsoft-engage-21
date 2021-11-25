@@ -1,4 +1,6 @@
-const uri = 'http://localhost:4000'
+// const uri = 'http://localhost:4000'
+const uri = 'http://ec2-13-232-90-241.ap-south-1.compute.amazonaws.com:4000'
+
 const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 
