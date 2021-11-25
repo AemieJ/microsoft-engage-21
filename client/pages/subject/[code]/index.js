@@ -36,7 +36,8 @@ export default function SubjectStudent({ code }) {
         const fetchSubject = async () => {
             let body = {
                 accessToken: localStorage.getItem("accessToken"),
-                code
+                code,
+                lastWeek: localStorage.getItem("lastWeek")
             }
             setLoading(true)
             let res = await fetch(`${server}/api/fetchSubject`, {
@@ -100,7 +101,9 @@ export default function SubjectStudent({ code }) {
         const fetchPreferences = async () => {
             let body = {
                 accessToken: localStorage.getItem("accessToken"),
-                code
+                code,
+                email: localStorage.getItem("email"),
+                lastWeek: localStorage.getItem("lastWeek")
             }
 
             let res = await fetch(`${server}/api/fetchPreferences`, {

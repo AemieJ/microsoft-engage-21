@@ -18,7 +18,6 @@ export default async (req, res) => {
         let data = []
         for (let j = 0; j < length1; ++j) {
             let code = data1[j].code
-            console.log(`Code: ${code}`)
             response = await fetch(`${uri}/api/lecture/${code}`, requestOptions)
             let data2 = await response.json()
             let length = data2.length

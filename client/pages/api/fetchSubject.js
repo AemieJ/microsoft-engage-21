@@ -21,18 +21,21 @@ export default async (req, res) => {
         let from = []
         let to = []
         let lectureID = []
+        let lastWeek = parsed.lastWeek
         for (let idx = 0; idx < length; ++idx) {
             let dateFrom = new Date(0), dateTo = new Date(0)
             dateFrom.setUTCMilliseconds(data2[idx].from)
             dateTo.setUTCMilliseconds(data2[idx].to)
             let id = data2[idx].id
-            if (!days.includes(week[dateFrom.getDay()])) {
-                lectureID.push(id)
-                days.push(week[dateFrom.getDay()])
-                let time = `${dateFrom.getHours()}:${dateFrom.getMinutes()}`
-                from.push(time)
-                time = `${dateTo.getHours()}:${dateTo.getMinutes()}`
-                to.push(time)
+            if (Math.round(data2[idx].from / 1000) >= lastWeek) {
+                if (!days.includes(week[dateFrom.getDay()])) {
+                    lectureID.push(id)
+                    days.push(week[dateFrom.getDay()])
+                    let time = `${dateFrom.getHours()}:${dateFrom.getMinutes()}`
+                    from.push(time)
+                    time = `${dateTo.getHours()}:${dateTo.getMinutes()}`
+                    to.push(time)
+                }
             }
         }
 

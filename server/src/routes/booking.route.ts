@@ -42,7 +42,6 @@ bookingRouter.post(
 bookingRouter.post(
   "/preferences",
   passport.authenticate("jwt", { session: false, failWithError: true }),
-  hasRole(RoleName.FACULTY),
   validate(bookingPreferenceSchema),
   getPreferences,
   handlePassportError(401)
