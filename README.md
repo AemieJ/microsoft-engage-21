@@ -19,7 +19,6 @@ Figma Link - https://www.figma.com/file/peJwosnp6l4tXk6k6VgyvW/Microsoft?node-id
 1. Next JS + React
 2. Fetch 
 3. React Bootstrap 
-4. Vercel (deployment)
 
 ### How to run: 
 1. With yarn: 
@@ -39,8 +38,23 @@ $ npm install && npm run dev
 ### ER diagram link:
 drawSQL - https://drawsql.app/student-141/diagrams/classroom-schedule
 
+### Postman API
+API Public link - https://www.getpostman.com/collections/008bd1f3aca86bf89c72
+
 ### Tech Stack: 
 1. MySQL 
 2. NodeJS + Express
 3. Typescript
-4. AWS EC2 (deployment)
+
+### How to run: 
+1. With yarn: 
+```bash
+$ cd server
+$ yarn && yarn start
+```
+
+2. With npm: 
+```bash
+$ cd server
+$ npm install && npm run start
+```
