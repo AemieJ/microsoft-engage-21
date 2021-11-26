@@ -19,11 +19,15 @@ export default function Prefs({ date, code }) {
     useEffect(() => {
         let from = localStorage.getItem("from")
         let to = localStorage.getItem("to")
-        let splits = date.split('-')
-        let timeSplit = from.split(':')
-        let fromEpoch = new Date(splits[2], (Number(splits[1]) - 1).toString(), splits[0], timeSplit[0], timeSplit[1]).getTime()
-        timeSplit = to.split(':')
-        let toEpoch = new Date(splits[2], (Number(splits[1]) - 1).toString(), splits[0], timeSplit[0], timeSplit[1]).getTime()
+        // this change is being made to adjust with the vercel utc timing
+        let temp = date.split('-')
+        let temp2 = temp[0]
+        temp[0] = temp[1], temp[1] = temp2
+        let date1 = temp.join("/")
+        let newDateFrom = `${date1} ${from} UTC`
+        let newDateTo = `${date1} ${to} UTC`
+        let fromEpoch = new Date(newDateFrom).getTime()
+        let toEpoch = new Date(newDateTo).getTime()
 
         const fetchRemotePreference = async () => {
             let obj = {

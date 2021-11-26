@@ -34,6 +34,7 @@ export default async (req, res) => {
                 count: offlineUsers.length,
                 users: offlineUsers
             }
+
         }
 
         res.status(200).json({ data: JSON.stringify(finalData), err: null})
