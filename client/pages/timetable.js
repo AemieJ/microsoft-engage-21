@@ -42,7 +42,7 @@ export default function TimeTable() {
             year = d.getYear(),
             days = []
 
-        d.setDate(d.getDate() + 1)
+        d.setDate(d.getDate())
         while (d.getDay() !== given) {
             d.setDate(d.getDate() + 1);
         }
