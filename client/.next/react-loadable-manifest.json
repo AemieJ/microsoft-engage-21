@@ -1,8 +1,8 @@
 {
   "subject/[code]/[date]/[mode]/index.js -> react-qr-reader": {
-    "id": 7164,
+    "id": "./node_modules/react-qr-reader/lib/index.js",
     "files": [
-      "static/chunks/164.229d4d1f04a327d4.js"
+      "static/chunks/node_modules_react-qr-reader_lib_index_js.js"
     ]
   }
 }
