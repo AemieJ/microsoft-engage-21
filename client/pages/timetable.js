@@ -3,9 +3,9 @@ import { server } from "../config/server";
 import { toast, ToastContainer } from 'react-nextjs-toast'
 import register from '../public/register.svg'
 import Image from 'next/image'
-import { Col, Row, Form, Button, Dropdown, InputGroup } from 'react-bootstrap'
+import { Col, Row, Form, Button, Dropdown, Badge } from 'react-bootstrap'
 import styles from '../styles/Auth.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export default function TimeTable() {
@@ -16,6 +16,13 @@ export default function TimeTable() {
     const [check, setChecked] = useState(false)
     const [fromArr, setFromArr] = useState([])
     const [toArr, setToArr] = useState([])
+    const [disabled, setDisabled] = useState(false)
+
+    useEffect(() => {
+        const today = new Date();
+        if (today.getDay() !== 5) setDisabled(true)
+        else setDisabled(false)
+    }, [])
 
     const setAllNull = () => {
         setCode('')
@@ -25,6 +32,7 @@ export default function TimeTable() {
         setChecked(false)
         setFromArr([])
         setToArr([])
+        setDisabled(false)
     }
 
     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -137,7 +145,18 @@ export default function TimeTable() {
                         <div className={styles.description}>Here, you will mention the day and date of the
                         classes you have created to be <b>included in the timetable for students.</b></div>
                     </div>
-                    <Form autoComplete="new-password" className={styles.form}>
+
+                    {
+                        disabled ? <>
+                        <div style ={{ fontWeight: "600", color: "#a10104"}}>
+                            Timetables can only be created each saturday. Please visit on saturday to create
+                            the timetable.
+                        </div> 
+                        </> : <></>
+                    }
+                    <br/>
+                    <Form autoComplete="new-password" className={styles.form}
+                    >
 
                         <Form.Group className="mb-3" controlId="formBasicCode">
                             <Form.Label><b>Subject Code</b></Form.Label>
@@ -146,6 +165,7 @@ export default function TimeTable() {
                                 required
                                 placeholder="eg. CO305"
                                 className={styles.form_control}
+                                disabled={disabled}
                                 value={code}
                                 onChange={(e) => { setCode(e.target.value) }} />
                         </Form.Group>
@@ -180,6 +200,7 @@ export default function TimeTable() {
                                     required
                                     className={`${styles.form_control}`}
                                     value={from}
+                                    disabled={disabled}
                                     onChange={(e) => {
                                         setFrom(e.target.value)
                                         let time = addTimes(e.target.value, '00:50')
@@ -205,6 +226,7 @@ export default function TimeTable() {
                                 id={`default-warn`}
                                 className={styles.check_warn}
                                 checked={check}
+                                disabled={disabled}
                                 onClick={() => setChecked(!check)}
                             />
                             <Form.Label className={styles.check_alert}>
@@ -215,7 +237,7 @@ export default function TimeTable() {
                         <div className={styles.btn_grp}>
                             <Button variant="primary" type="submit"
                                 className={styles.submit}
-                                disabled={!check}
+                                disabled={!check || disabled}
                                 onClick={insertData}
                             >
                                 Create

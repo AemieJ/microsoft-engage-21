@@ -4,32 +4,14 @@ import styles from '../styles/Modal.module.css'
 import { server } from '../config/server.js'
 import { toast, ToastContainer } from 'react-nextjs-toast'
 
-const ResetModalClass = () => {
+const ResetModalFac = () => {
     const [showModal, setShowModal] = useState(true)
 
     const resetCode = async (e) => {
         e.preventDefault()
 
-        const res = await fetch(`${server}/api/reset`, {
-            method: "POST",
-            body: localStorage.getItem("accessToken")
-        })
-
-        const { data, err } = await res.json()
-        if (err) {
-            toast.notify(err, {
-                duration: 5,
-                type: "error"
-            })
-        } else {
-            toast.notify('Codes and preferences have been successfully reset', {
-                duration: 5,
-                type: "success"
-            })
-
-            let today = Math.round(new Date().getTime() / 1000)
-            localStorage.setItem("lastWeek", today)
-        }
+        let today = Math.round(new Date().getTime() / 1000)
+        localStorage.setItem("lastWeek", today)
 
         setTimeout(window.location.reload(), 8000)
     }
@@ -53,13 +35,12 @@ const ResetModalClass = () => {
             </Modal.Header>
             <Modal.Body>
                 <p>
-                    As {"it's"} Friday again, it is time to clear your code and reset your preferences
-                    for the next week.
+                    As {"it's"} Friday again, it is time to get back the access on creating timetables. 
         </p>
         <Button
                         style={{ width: "30%" }}
                         onClick={resetCode}
-                        >Reset Code</Button>
+                        >Renew access</Button>
             </Modal.Body>
             
         </Modal>
@@ -68,4 +49,4 @@ const ResetModalClass = () => {
     )
 }
 
-export default ResetModalClass;
+export default ResetModalFac;

@@ -5,27 +5,27 @@ import styles from '../styles/Dashboard.module.css'
 const FacultySubjects = ({ subjects }) => {
     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-    useEffect(() => {
-        let item = Number(localStorage.getItem("lastWeek"))
-        let today = new Date()
-        let todayDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
+    // useEffect(() => {
+    //     let item = Number(localStorage.getItem("lastWeek"))
+    //     let today = new Date()
+    //     let todayDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
 
-        if (today.getDay() === 6) {
-            if (item !== 0) {
-                let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
-                d.setUTCSeconds(item);
-                let pushDate = new Date(d.getTime());
-                let date = pushDate.getDate() + '-' + (pushDate.getMonth() + 1) + '-' + pushDate.getFullYear()
-                if (todayDate !== date) {
-                    let time = Math.round(today.getTime() / 1000)
-                    localStorage.setItem("lastWeek", time)
-                }
-            } else {
-                let time = Math.round(today.getTime() / 1000)
-                localStorage.setItem("lastWeek", time)
-            }
-        }
-    }, [])
+    //     if (today.getDay() === 5) {
+    //         if (item !== 0) {
+    //             let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+    //             d.setUTCSeconds(item);
+    //             let pushDate = new Date(d.getTime());
+    //             let date = pushDate.getDate() + '-' + (pushDate.getMonth() + 1) + '-' + pushDate.getFullYear()
+    //             if (todayDate !== date) {
+    //                 let time = Math.round(today.getTime() / 1000)
+    //                 localStorage.setItem("lastWeek", time)
+    //             }
+    //         } else {
+    //             let time = Math.round(today.getTime() / 1000)
+    //             localStorage.setItem("lastWeek", time)
+    //         }
+    //     }
+    // }, [])
     return (
         <Row xs={1} md={1} lg={1} className={`g-4 ${styles.main}`}>
             {subjects.map((subject) => {

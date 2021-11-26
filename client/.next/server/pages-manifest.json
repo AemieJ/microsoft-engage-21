@@ -2,6 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/subject/[code]/[date]/[mode]": "pages/subject/[code]/[date]/[mode].js",
-  "/": "pages/index.js"
+  "/api/fetchFacultySubject": "pages/api/fetchFacultySubject.js",
+  "/dashboard/[role]": "pages/dashboard/[role].js",
+  "/": "pages/index.js",
+  "/timetable": "pages/timetable.js"
 }

@@ -10,6 +10,7 @@ import Subjects from '../../../Components/Subjects.js'
 import FacultySubjects from '../../../Components/FacultySubjects.js'
 import ModalClass from '../../../Components/ModalClass.js'
 import ResetModalClass from '../../../Components/ResetModalClass.js'
+import ResetModalFac from '../../../Components/ResetModalFac.js'
 
 export default function Dashboard({ roleURL }) {
     const [role, setRole] = useState(null)
@@ -29,9 +30,10 @@ export default function Dashboard({ roleURL }) {
 
     useEffect(() => {
         let item = Number(localStorage.getItem("lastWeek"))
+        console.log(item)
         let today = new Date()
         let todayDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
-        if (today.getDay() === 0) {
+        if (today.getDay() === 5) {
             if (item !== 0) {
                 let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
                 d.setUTCSeconds(item);
@@ -212,7 +214,7 @@ export default function Dashboard({ roleURL }) {
                                             disabled={true}
                                             onChange={e => setRemote(e.target.value)} />
                                         <Button
-                                            disabled={date.getDay() !== 6 || (remote !== null && remote !== "")}
+                                            disabled={date.getDay() !== 5 || (remote !== null && remote !== "")}
                                             onClick={generateRemoteCode}
                                         >Generate</Button>
                                     </InputGroup>
@@ -227,13 +229,13 @@ export default function Dashboard({ roleURL }) {
                                             disabled={true}
                                             onChange={e => setPerson(e.target.value)} />
                                         <Button
-                                            disabled={date.getDay() !== 6 || (person !== null && person !== "")}
+                                            disabled={date.getDay() !== 5 || (person !== null && person !== "")}
                                             onClick={generateSeatCode}
                                         >Generate</Button>
                                     </InputGroup>
                                 </div>
                                 {
-                                    date.getDay() !== 6 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
+                                    date.getDay() !== 5 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
             preferences are set and will be renewed on Saturday itself.</b></p> : <></>
                                 }
                                 <Subjects subjects={subjects} />
@@ -244,7 +246,10 @@ export default function Dashboard({ roleURL }) {
                                     resetModal ? <ResetModalClass /> : <></>
                                 }
                             </> : <>
-                                    <FacultySubjects subjects={facSubs} />
+                                {
+                                    resetModal ? <ResetModalFac /> : <>
+                                    <FacultySubjects subjects={facSubs} /></>
+                                }
                                 </>
                         }
                     </>
