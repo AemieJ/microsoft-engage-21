@@ -1,189 +1,188 @@
 .title {
-    font-size: 2.25rem;
-    font-weight: 600;
-    margin-top: 2rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
 }
 
 .title_sec {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .description {
-    width: 80%;
+  width: 80%;
 }
 
 .remote_inp {
-    width: 40%;
+  width: 40%;
 }
 
 .codes {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-
 .main {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .card_img {
-    border-radius: 1.25rem;
+  border-radius: 1.25rem;
 }
 
 .card_header {
-    border-top-left-radius: 1.5rem !important;
-    border-top-right-radius: 1.5rem !important;
-    background-color: #1D37C2 !important;
-    color: #fff !important;
+  border-top-left-radius: 1.5rem !important;
+  border-top-right-radius: 1.5rem !important;
+  background-color: #1d37c2 !important;
+  color: #fff !important;
 }
 
 .danger_msg {
-    color: #a51010;
-    width: 80%;
+  color: #a51010;
+  width: 80%;
 }
 
 .card_subtitle {
-    opacity: 80%;
-    font-size: .85rem;
+  opacity: 80%;
+  font-size: 0.85rem;
 }
 
 .card_body {
-    opacity: 80%;
-    font-size: 1rem;
-    padding: .75rem 0;
+  opacity: 80%;
+  font-size: 1rem;
+  padding: 0.75rem 0;
 }
 
 .error_msg {
-    color: #a10404 !important;
-    text-decoration: underline;
-    font-weight: 600;
-    font-size: 1.25rem;
+  color: #a10404 !important;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 1.25rem;
 }
 
 .btn,
-.search_btn, 
+.search_btn,
 .search {
-    background: #1D37C2 !important;
-    color: #fff !important;
+  background: #1d37c2 !important;
+  color: #fff !important;
 }
 
 .danger_btn {
-    background: #a10404 !important;
-    border-color: #a10404 !important;
+  background: #a10404 !important;
+  border-color: #a10404 !important;
 }
 
 .btn:active,
 .btn:hover,
 .btn:focus {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .search_btn:focus,
 .search_btn:hover,
 .search_btn:active {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .fac_card {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #fff !important;
-    color: #1D37C2 !important;
-    padding: 10px;
-    border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff !important;
+  color: #1d37c2 !important;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .fac_sec {
-    display: flex;
-    flex-direction: column;
-    flex: .2;
-    margin: 0 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 0.2;
+  margin: 0 0 0 1.5rem;
 }
 
 .fac_sec_title {
-    font-size: 1.25rem;
-    font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .fac_sec_description {
-    font-size: 1.1rem;
-    opacity: 80%;
+  font-size: 1.1rem;
+  opacity: 80%;
 }
 
 .fac_btn {
-    background-color:#1D37C2 !important;
-    color: #fff !important;
-    border: 2px solid #fff !important;
-    border-radius: 10px;
+  background-color: #1d37c2 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+  border-radius: 10px;
 }
 
 .fac_btn:hover,
 .fac_btn:active,
 .fac_btn:focus {
-    background-color: #fff !important;
-    color: #1D37C2 !important;
-    border-color: #1D37C2 !important;
+  background-color: #fff !important;
+  color: #1d37c2 !important;
+  border-color: #1d37c2 !important;
 }
 
 .btn_preference {
-    background: none !important;
-    border: none !important;
-    color: #fff !important;
-    text-decoration: underline;
+  background: none !important;
+  border: none !important;
+  color: #fff !important;
+  text-decoration: underline;
 }
 
 .btn_preference:hover,
 .btn_preference:focus,
 .btn_preference:active {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .btn_preference_submit,
 .btn_preference_submit:hover,
 .btn_preference_submit:focus,
 .btn_preference_submit:active {
-    margin-bottom: 1rem;
-    background-color: #212529 !important;
-    color: #fff !important;
+  margin-bottom: 1rem;
+  background-color: #212529 !important;
+  color: #fff !important;
 }
 
 .preferences_sec {
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
-    color: #1d37c2;
-    align-items: center;
-    padding: 20px;
-    border-radius: 10px; 
-    margin-bottom: 2rem;
-    width: 80%;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  color: #1d37c2;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  width: 80%;
 }
 
 .mode_sec_page {
-    background-color: #fff;
-    color: #1D37C2;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding: 10px;
-    border-radius: 10px;
+  background-color: #fff;
+  color: #1d37c2;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .mode_sec_title,
 .pref_title {
-    font-weight: 600;
-    font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .login_image {
-    height: 85% !important;
+  height: 85% !important;
   width: auto !important;
   min-width: auto !important;
   min-height: auto !important;
@@ -191,79 +190,78 @@
   max-height: auto !important;
 }
 
-
 .prefs_btn_toggle {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-color: #fff !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: #fff !important;
 }
 
 .prefs_btn_toggle:active,
 .prefs_btn_toggle:hover,
 .prefs_btn_toggle:focus {
-    background-color: #1D37C2 !important;
-    color: #fff !important;
-    border-color: #1D37C2 !important;
+  background-color: #1d37c2 !important;
+  color: #fff !important;
+  border-color: #1d37c2 !important;
 }
 
 .prefs_btn_toggle_second {
-    margin-left: 0.4rem;
+  margin-left: 0.4rem;
 }
 
 .box {
-    background-color: #fff;
-    border: 1px solid #1D37C2;
-    width: 80%;
-    padding: 10px;
-    border-radius: 15px;
-    border-top-left-radius: 0;
-    margin-bottom: 2rem;
+  background-color: #fff;
+  border: 1px solid #1d37c2;
+  width: 80%;
+  padding: 10px;
+  border-radius: 15px;
+  border-top-left-radius: 0;
+  margin-bottom: 2rem;
 }
 
 .user_pref {
-    background: #DFEBFC ;
-    color: #1d37c2;
-    padding: 6px;
-    border-radius: 6px;
-    padding-left: 12px;
-    margin-top: 0.4rem;
-    margin-bottom: 1rem;
+  background: #dfebfc;
+  color: #1d37c2;
+  padding: 6px;
+  border-radius: 6px;
+  padding-left: 12px;
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
 }
 
 .badge_name {
-    background: #1d37c2;
-    color: #fff;
-    border-color: #1d37c2;
+  background: #1d37c2;
+  color: #fff;
+  border-color: #1d37c2;
 }
 
 .badge_val {
-    border-color: #1d37c2;
-    background: #fff;
-    color: #1d37c2;
+  border-color: #1d37c2;
+  background: #fff;
+  color: #1d37c2;
 }
 
 @media (max-width: 991px) {
-    .description,
-    .danger_msg {
-        width: 100%;
-    }
+  .description,
+  .danger_msg {
+    width: 100%;
+  }
 
-    .remote_inp {
-        width: 100%;
-    }
+  .remote_inp {
+    width: 100%;
+  }
 
-    .fac_card {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        width: 80%;
-    }
+  .fac_card {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 80%;
+  }
 
-    .fac_sec {
-        margin-bottom: 1rem;
-    }
+  .fac_sec {
+    margin-bottom: 1rem;
+  }
 
-    .mode_sec_page {
-        width: 100%;
-    }
+  .mode_sec_page {
+    width: 100%;
+  }
 }

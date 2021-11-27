@@ -1,24 +1,26 @@
 // const uri = 'http://localhost:4000'
-const uri = 'http://ec2-13-232-90-241.ap-south-1.compute.amazonaws.com:4000'
-
+const uri = "http://ec2-13-232-90-241.ap-south-1.compute.amazonaws.com:4000"
 
 export default async (req, res) => {
-    let parsed = JSON.parse(req.body)
-    let requestOptions = {
-        method: 'POST',
-        headers: {
-            "Authorization": `Bearer ${parsed.accessToken}`
-        },
-        redirect: 'follow'
-    };
+  let parsed = JSON.parse(req.body)
+  let requestOptions = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${parsed.accessToken}`,
+    },
+    redirect: "follow",
+  }
 
-    try {
-        const response = await fetch(`${uri}/api/classroom/join/${parsed.code}`, requestOptions)
-        const data = await response.json()
-        if (data.err) res.status(200).json({ data: null, err: data.err})
+  try {
+    const response = await fetch(
+      `${uri}/api/classroom/join/${parsed.code}`,
+      requestOptions
+    )
+    const data = await response.json()
+    if (data.err) res.status(200).json({ data: null, err: data.err })
 
-        res.status(200).json({ data: 'Successfully joined the class', err: null})
-    } catch (err) {
-        res.status(500).json({ data: null, err: "Server Error"})
-    }
+    res.status(200).json({ data: "Successfully joined the class", err: null })
+  } catch (err) {
+    res.status(500).json({ data: null, err: "Server Error" })
+  }
 }

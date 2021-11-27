@@ -113,7 +113,7 @@
 
 .check_alert {
   color: #a10404;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 @media (max-width: 991px) {

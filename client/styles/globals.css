@@ -4,24 +4,23 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #DFEBFC !important;
-
+  background-color: #dfebfc !important;
 }
 
 button#scroll {
   display: none;
   display: block;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;    
-    z-index: 1250;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1250;
 }
 
 .form-control,
 .btn,
 a,
 .form-check-input {
-  transition: none !important
+  transition: none !important;
 }
 
 .btn {
@@ -35,13 +34,13 @@ a,
 .btn:active,
 .btn:hover {
   color: #1d37c2 !important;
-  outline:0px !important; 
+  outline: 0px !important;
   box-shadow: none !important;
 }
 
 a:focus,
 .form-check-input:focus {
-  outline:0px !important; 
+  outline: 0px !important;
   box-shadow: none !important;
 }
 
@@ -67,7 +66,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .btn-primary.active {
-  background-color: #1D37C2 !important;
+  background-color: #1d37c2 !important;
   color: #fff !important;
-  border-color: #1D37C2 !important;
+  border-color: #1d37c2 !important;
 }

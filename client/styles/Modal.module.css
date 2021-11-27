@@ -1,9 +1,9 @@
 .code_inp {
-    width: 50%;
+  width: 50%;
 }
 
 @media (max-width: 991px) {
-    .code_inp {
-        width: 100%;
-    }
+  .code_inp {
+    width: 100%;
+  }
 }
