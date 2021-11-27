@@ -41,13 +41,17 @@ Figma Link - https://www.figma.com/file/peJwosnp6l4tXk6k6VgyvW/Microsoft?node-id
 
 2. Run `cd client` after cloning the repository and create a new **.env** file and include the following key-value pairs for utilizing the mail service - 
     ```
-    .env
-
     GMAIL_USER = example@gmail.com
     GMAIL_PASS = Test#123
     ```
 
-3. Following this, go to your chrome browser with the gmail account and perform the following - 
+    For the testing purpose, you can use following credentials - 
+    ```
+    GMAIL_USER = bginger436@gmail.com
+    GMAIL_PASS = GingerAle#945
+    ```
+
+3. Following this, go to your chrome browser with the gmail account and sign in with the credentials and perform the following - 
 - Disable 2 factor authentication
 - Enable Low secure app access 
 - Click this [link](https://accounts.google.com/DisplayUnlockCaptcha) and enable it. 
@@ -62,7 +66,19 @@ Figma Link - https://www.figma.com/file/peJwosnp6l4tXk6k6VgyvW/Microsoft?node-id
     let toEpoch = new Date(splits[2], (Number(splits[1]) - 1).toString(), splits[0], timeSplit[0], timeSplit[1]).getTime()
     ```
 
-4. After performing this changes, open your terminal within this client directory and perform the following commands - 
+5. If you're planning to run server locally and not run the deployed version, then each file within `/pages/api/` has the following settings - 
+    ```javascript
+    // const uri = 'http://localhost:4000'
+    const uri = "http://ec2-13-232-90-241.ap-south-1.compute.amazonaws.com:4000"
+    ```
+    Please change this setting to the following - 
+    ```javascript
+    const uri = 'http://localhost:4000'
+    // const uri = "http://ec2-13-232-90-241.ap-south-1.compute.amazonaws.com:4000"
+    ```
+
+
+6. After performing this changes, open your terminal within this client directory and perform the following commands - 
     ```bash
     $ yarn
     $ yarn dev
@@ -96,14 +112,12 @@ API Public link - https://www.getpostman.com/collections/008bd1f3aca86bf89c72
 
 2. Run `cd server` after cloning the repository and create a new **.env** file and include the following key-value pairs for enabling the postgres db and jwt - 
     ```
-    .env 
-
-    DB_NAME=<elphantsql instance name>
-    DB_USER=<elphantsql instance name>
-    DB_PASS=<elphantsql instance pass>
-    DB_HOST=<elphantsql instance host> (will be of form - name.db.elphantsql.com)
+    DB_NAME=ajeoucay
+    DB_USER=ajeoucay
+    DB_PASS=8zHG54y_gC7LjhDIH6O5ug6rFiqZ2mrq
+    DB_HOST=castor.db.elephantsql.com
     DB_PORT=5432
-    JWT_SECRET=<use a JWT secret>
+    JWT_SECRET=238dasAd230dj
     ```
 
 3. After performing this changes, open your terminal within this server directory and perform the following commands - 
