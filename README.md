@@ -73,6 +73,7 @@ Figma Link - https://www.figma.com/file/peJwosnp6l4tXk6k6VgyvW/Microsoft?node-id
     $ npm install
     $ npm run dev
     ```
+<hr />
 
 ## ✨ &nbsp; Server side
 Server side is the backend code which creates the api to be utilized by the client. The section include the er diagram link, postman api link, tech stacks utilized and how to run it locally on your machine.
@@ -108,12 +109,12 @@ API Public link - https://www.getpostman.com/collections/008bd1f3aca86bf89c72
 3. After performing this changes, open your terminal within this server directory and perform the following commands - 
     ```bash
     $ yarn
-    $  yarn start
+    $ yarn start
     ```
 
     **(or)**
     
     ```bash
     $ npm install
-    $  npm run start
+    $ npm run start
     ```
