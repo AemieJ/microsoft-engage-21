@@ -96,7 +96,7 @@ export default function Login() {
 
       <Row className={styles.main}>
         <Col className={styles.image}>
-          <Image src={login} className={styles.login_image} />
+          <Image src={login} className={styles.login_image} alt="Image pertaining to login page" />
         </Col>
         <Col sm={12} lg={true}>
           <div>
@@ -137,6 +137,7 @@ export default function Login() {
             </Form.Group>
             <div className={styles.btn_grp}>
               <Button
+                aria-label="Login btn"
                 variant="primary"
                 type="submit"
                 className={styles.submit}

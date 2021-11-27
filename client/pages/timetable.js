@@ -315,6 +315,7 @@ export default function TimeTable() {
 
             <div className={styles.btn_grp}>
               <Button
+                aria-label="Add timetable"
                 variant="primary"
                 type="submit"
                 className={styles.submit}

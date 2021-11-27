@@ -56,7 +56,7 @@ const ResetModalClass = () => {
             As {"it's"} Saturday again, it is time to clear your code and reset
             your preferences for the next week.
           </p>
-          <Button style={{ width: "30%" }} onClick={resetCode}>
+          <Button style={{ width: "30%" }} onClick={resetCode} aria-label="Reset modal class">
             Reset Code
           </Button>
         </Modal.Body>

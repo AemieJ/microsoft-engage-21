@@ -152,7 +152,7 @@ export default function ModeAttend({ date, code, mode }) {
       </Head>
       <Row className={styles.main}>
         <Col className={styles.image}>
-          <Image src={login} className={styles.login_image} />
+          <Image src={login} className={styles.login_image} alt="Image pertaining to Subject attendance page"/>
         </Col>
         <Col>
           <div className={styles.title_sec}>
@@ -196,6 +196,7 @@ export default function ModeAttend({ date, code, mode }) {
                     }}
                   />
                   <Button
+                    aria-label="Verify remote code"
                     style={{ width: "30%" }}
                     disabled={attendance}
                     onClick={verifyAndDirect}
@@ -214,6 +215,7 @@ export default function ModeAttend({ date, code, mode }) {
                       Scan the code on your seat
                     </div>
                     <Button
+                      aria-label="Click to scan"
                       onClick={() => setScan(true)}
                       style={{ width: "30%" }}
                       disabled={attendance}
@@ -244,7 +246,8 @@ export default function ModeAttend({ date, code, mode }) {
                           Click on send OTP for double-verification
                         </div>
                         {!click ? (
-                          <Button style={{ width: "30%" }} onClick={sendOtp}>
+                          <Button style={{ width: "30%" }} onClick={sendOtp}
+                          aria-label="Send OTP">
                             Send OTP
                           </Button>
                         ) : (
@@ -260,6 +263,7 @@ export default function ModeAttend({ date, code, mode }) {
                                 onChange={(e) => setOTP(e.target.value)}
                               />
                               <Button
+                                aria-label="Verify otp"
                                 style={{ width: "30%" }}
                                 onClick={() => {
                                   if (otp === code1) {

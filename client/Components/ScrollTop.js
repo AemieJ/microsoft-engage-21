@@ -20,13 +20,14 @@ const ScrollTop = () => {
   return (
     <>
       <Button
+        aria-label="Scroll up"
         id="scroll"
         onClick={(e) => {
           e.preventDefault()
           window.scrollTo(0, 0)
         }}
       >
-        <Image src={arrow} />
+        <Image src={arrow} alt="Scroll top icon"/>
       </Button>
     </>
   )

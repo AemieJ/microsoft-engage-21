@@ -38,7 +38,7 @@ const ResetModalFac = () => {
             As {"it's"} Saturday again, it is time to get back the access on
             creating timetables.
           </p>
-          <Button style={{ width: "30%" }} onClick={resetCode}>
+          <Button style={{ width: "30%" }} onClick={resetCode} aria-label="Renew access">
             Renew access
           </Button>
         </Modal.Body>

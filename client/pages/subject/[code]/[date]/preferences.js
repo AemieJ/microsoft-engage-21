@@ -147,6 +147,7 @@ export default function Prefs({ date, code }) {
 
       <div className={styles.prefs_toggle_sec}>
         <Button
+          aria-label="Remote preference users"
           className={styles.prefs_btn_toggle}
           active={isRemote}
           onClick={() => setIsRemote(true)}
@@ -154,6 +155,7 @@ export default function Prefs({ date, code }) {
           Remote
         </Button>
         <Button
+          aria-label="Offline preference users"
           className={`${styles.prefs_btn_toggle} ${styles.prefs_btn_toggle_second}`}
           active={!isRemote}
           onClick={() => setIsRemote(false)}

@@ -66,6 +66,7 @@ const FacultySubjects = ({ subjects }) => {
               >
                 <Row>
                   <Button
+                    aria-label="Preferences button"
                     className={styles.fac_btn}
                     onClick={(e) => {
                       e.preventDefault()

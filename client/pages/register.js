@@ -232,6 +232,7 @@ export default function Register() {
 
             <div className={styles.btn_grp}>
               <Button
+                aria-label="Register btn"
                 variant="primary"
                 type="submit"
                 className={styles.submit}
@@ -249,7 +250,7 @@ export default function Register() {
           </Form>
         </Col>
         <Col className={styles.image}>
-          <Image src={register} />
+          <Image src={register} alt="Image pertaining to register page"/>
         </Col>
       </Row>
 

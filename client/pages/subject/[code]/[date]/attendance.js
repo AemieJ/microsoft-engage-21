@@ -125,6 +125,7 @@ export default function Attendance({ date, code }) {
 
       <div className={styles.prefs_toggle_sec}>
         <Button
+          aria-label="Remote attendance users"
           className={styles.prefs_btn_toggle}
           active={isRemote}
           onClick={() => setIsRemote(true)}
@@ -132,6 +133,7 @@ export default function Attendance({ date, code }) {
           Remote
         </Button>
         <Button
+          aria-label="Offline attendance users"
           className={`${styles.prefs_btn_toggle} ${styles.prefs_btn_toggle_second}`}
           active={!isRemote}
           onClick={() => setIsRemote(false)}

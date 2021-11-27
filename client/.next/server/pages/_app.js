@@ -217,13 +217,15 @@ const ScrollTop = ()=>{
     }, []);
     return(/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
         children: /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Button, {
+            "aria-label": "Scroll up",
             id: "scroll",
             onClick: (e)=>{
                 e.preventDefault();
                 window.scrollTo(0, 0);
             },
             children: /*#__PURE__*/ jsx_runtime_.jsx(next_image["default"], {
-                src: arrow_up
+                src: arrow_up,
+                alt: "Scroll top icon"
             })
         })
     }));

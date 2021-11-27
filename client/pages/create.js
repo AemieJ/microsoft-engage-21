@@ -147,6 +147,7 @@ export default function Create() {
 
             <div className={styles.btn_grp}>
               <Button
+                aria-label="Create class"
                 variant="primary"
                 type="submit"
                 className={styles.submit}

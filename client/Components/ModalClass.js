@@ -70,7 +70,8 @@ const ModalClass = () => {
                   setCode(e.target.value)
                 }}
               />
-              <Button style={{ width: "30%" }} onClick={joinClass}>
+              <Button style={{ width: "30%" }} onClick={joinClass}
+              aria-label="Join class button">
                 Join
               </Button>
             </InputGroup>
@@ -78,6 +79,7 @@ const ModalClass = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button
+            aria-label="Close modal"
             onClick={() => {
               setShowModal(false)
               window.location.reload()

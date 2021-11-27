@@ -221,6 +221,7 @@ export default function Dashboard({ roleURL }) {
             <p className={styles.title}>Dashboard</p>
             {role === "student" ? (
               <Button
+              aria-label="Join class"
                 disabled={!access}
                 onClick={(e) => {
                   e.preventDefault()
@@ -282,6 +283,7 @@ export default function Dashboard({ roleURL }) {
                         onChange={(e) => setRemote(e.target.value)}
                       />
                       <Button
+                        aria-label="Generate remote code"
                         disabled={
                           date.getDay() !== 6 ||
                           (remote !== null && remote !== "")
@@ -306,6 +308,7 @@ export default function Dashboard({ roleURL }) {
                         onChange={(e) => setPerson(e.target.value)}
                       />
                       <Button
+                        aria-label="Generate seat code"
                         disabled={
                           date.getDay() !== 6 ||
                           (person !== null && person !== "")

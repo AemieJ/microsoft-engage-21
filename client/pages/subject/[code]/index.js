@@ -255,6 +255,7 @@ export default function SubjectStudent({ code }) {
                         <td>{tableRow[2]}</td>
                         <td>
                           <Button
+                            aria-label="Remote pref"
                             className={styles.btn_preference}
                             disabled={prefAdded}
                             onClick={(e) => {
@@ -284,6 +285,7 @@ export default function SubjectStudent({ code }) {
                           </Button>{" "}
                           /{" "}
                           <Button
+                            aria-label="Offline pref"
                             className={styles.btn_preference}
                             disabled={prefAdded}
                             onClick={(e) => {
@@ -319,6 +321,7 @@ export default function SubjectStudent({ code }) {
               </Table>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Button
+                  aria-label="Submit pref btn"
                   className={styles.btn_preference_submit}
                   disabled={err || prefAdded}
                   onClick={addPreferences}
@@ -388,6 +391,7 @@ export default function SubjectStudent({ code }) {
                               <Row>
                                 {data[4] === "Remote" ? (
                                   <Button
+                                  aria-label="Direct remote attendance page"
                                     disabled={data[3] !== today}
                                     onClick={(e) => {
                                       e.preventDefault()
@@ -398,6 +402,7 @@ export default function SubjectStudent({ code }) {
                                   </Button>
                                 ) : (
                                   <Button
+                                  aria-label="Direct offline attendance page"
                                     disabled={data[3] !== today}
                                     onClick={(e) => {
                                       e.preventDefault()

@@ -21,6 +21,7 @@ const Subjects = ({ subjects }) => {
                   schedule.
                 </Card.Body>
                 <Button
+                  aria-label="Direct to class"
                   variant="primary"
                   onClick={(e) => {
                     e.preventDefault()

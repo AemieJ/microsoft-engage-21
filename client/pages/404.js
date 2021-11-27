@@ -17,7 +17,7 @@ export default function Custom404() {
       </Head>
       <div className={styles.main}>
         <Col lg={6}>
-          <Image src={notFound} />
+          <Image src={notFound} alt="not found 404 image" />
         </Col>
         <Col className={styles.title}>
           <b>404!! {"You've"} landed on the wrong page!</b>
@@ -25,6 +25,7 @@ export default function Custom404() {
           {"Don't worry"}, we will send you back to the safe place.
         </Col>
         <Button
+          aria-label="Back to home"
           className={styles.home_btn}
           onClick={() => {
             window.location.href = "/"
