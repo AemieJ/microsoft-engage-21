@@ -199,6 +199,14 @@ export default function SubjectStudent({ code }) {
   }
   return (
     <>
+      <Head>
+        <title>Scheduler - Subject detail</title>
+        <meta
+          name="description"
+          content="An application for the students and faculty both like"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {loading ? (
         <>
           <div className={styles.title_sec}>
