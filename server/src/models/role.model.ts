@@ -7,9 +7,9 @@ import {
   HasManyRemoveAssociationMixin,
   Model,
   Optional,
-} from "sequelize";
-import sequelize from "../db";
-import User from "./user.model";
+} from "sequelize"
+import sequelize from "../db"
+import User from "./user.model"
 
 export enum RoleName {
   STUDENT = "STUDENT",
@@ -17,31 +17,31 @@ export enum RoleName {
 }
 
 interface RoleAttributes {
-  id: number;
-  name: string;
-  description: string;
+  id: number
+  name: string
+  description: string
 }
 
-type RoleCreationAttributes = Optional<RoleAttributes, "id">;
+type RoleCreationAttributes = Optional<RoleAttributes, "id">
 
 class Role
   extends Model<RoleAttributes, RoleCreationAttributes>
   implements RoleAttributes
 {
-  public id!: number;
-  public name!: string;
-  public description!: string;
+  public id!: number
+  public name!: string
+  public description!: string
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public readonly createdAt!: Date
+  public readonly updatedAt!: Date
 
-  public getUsers!: HasManyGetAssociationsMixin<User>;
-  public addUser!: HasManyAddAssociationMixin<User, number>;
-  public hasUser!: HasManyHasAssociationMixin<User, number>;
-  public countUsers!: HasManyCountAssociationsMixin;
-  public removeUser!: HasManyRemoveAssociationMixin<User, number>;
+  public getUsers!: HasManyGetAssociationsMixin<User>
+  public addUser!: HasManyAddAssociationMixin<User, number>
+  public hasUser!: HasManyHasAssociationMixin<User, number>
+  public countUsers!: HasManyCountAssociationsMixin
+  public removeUser!: HasManyRemoveAssociationMixin<User, number>
 
-  public readonly user?: User[];
+  public readonly user?: User[]
 }
 
 Role.init(
@@ -63,6 +63,6 @@ Role.init(
     sequelize,
     modelName: "Role",
   }
-);
+)
 
-export default Role;
+export default Role

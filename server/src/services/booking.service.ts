@@ -1,8 +1,8 @@
-import { Op } from "sequelize";
-import Booking from "../models/booking.model";
-import ClassRoom from "../models/classroom.model";
-import Lecture from "../models/lecture.model";
-import User from "../models/user.model";
+import { Op } from "sequelize"
+import Booking from "../models/booking.model"
+import ClassRoom from "../models/classroom.model"
+import Lecture from "../models/lecture.model"
+import User from "../models/user.model"
 
 export const createBooking = async (
   mode: string,
@@ -21,32 +21,32 @@ export const createBooking = async (
         where: { id: user.id },
       },
     ],
-  });
+  })
 
   if (booking) {
-    return booking;
+    return booking
   }
 
-  booking = await Booking.create({ mode, attended: false });
-  await booking.setUser(user);
-  await booking.setLecture(lecture);
-  return booking;
-};
+  booking = await Booking.create({ mode, attended: false })
+  await booking.setUser(user)
+  await booking.setLecture(lecture)
+  return booking
+}
 
 export const attendBooking = async (booking: Booking): Promise<Booking> => {
-  await booking.update({ attended: true });
-  return booking;
-};
+  await booking.update({ attended: true })
+  return booking
+}
 
 export const getBookingsByUser = async (user: User): Promise<Booking[]> => {
-  return await user.getBookings();
-};
+  return await user.getBookings()
+}
 
 export const getBookingsByLecture = async (
   lecture: Lecture
 ): Promise<Booking[]> => {
-  return await lecture.getBookings();
-};
+  return await lecture.getBookings()
+}
 
 export const getAllPreferences = async (
   from: number,
@@ -71,13 +71,13 @@ export const getAllPreferences = async (
         model: Booking,
       },
     ],
-  });
+  })
 
-  const bookings = [];
+  const bookings = []
   for (const lecture of lectures) {
-    const lBookings = await lecture.getBookings();
-    bookings.push(...lBookings);
+    const lBookings = await lecture.getBookings()
+    bookings.push(...lBookings)
   }
 
-  return bookings;
-};
+  return bookings
+}

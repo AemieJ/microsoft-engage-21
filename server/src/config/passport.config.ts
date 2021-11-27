@@ -2,13 +2,13 @@ import {
   ExtractJwt,
   Strategy as JwtStrategy,
   VerifiedCallback,
-} from "passport-jwt";
-import { doesUserExistByEmail, getUserByEmail } from "../services/user.service";
+} from "passport-jwt"
+import { doesUserExistByEmail, getUserByEmail } from "../services/user.service"
 
-const secret = process.env.JWT_SECRET || "SECRET";
+const secret = process.env.JWT_SECRET || "SECRET"
 
 export interface JwtPayload {
-  email: string;
+  email: string
 }
 
 export const jwtStrategyCallback = async (
@@ -16,17 +16,17 @@ export const jwtStrategyCallback = async (
   done: VerifiedCallback
 ) => {
   try {
-    const email = payload.email;
-    const userExists = await doesUserExistByEmail(email);
+    const email = payload.email
+    const userExists = await doesUserExistByEmail(email)
     if (userExists) {
-      const user = await getUserByEmail(email);
-      return done(null, user);
+      const user = await getUserByEmail(email)
+      return done(null, user)
     }
-    return done(null, false);
+    return done(null, false)
   } catch (err) {
-    return done(err, false);
+    return done(err, false)
   }
-};
+}
 
 export const jwtStrategy = new JwtStrategy(
   {
@@ -34,4 +34,4 @@ export const jwtStrategy = new JwtStrategy(
     secretOrKey: secret,
   },
   jwtStrategyCallback
-);
+)
