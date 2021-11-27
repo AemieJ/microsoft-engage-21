@@ -168,6 +168,11 @@ export default function Dashboard({ roleURL }) {
 
     return (
         <>
+        <Head>
+        <title>Scheduler - Dashboard</title>
+        <meta name="description" content="An application for the students and faculty both like" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
         {
             loading ? <>
             <div className={styles.title_sec}>

@@ -98,6 +98,7 @@ export default function Register() {
         <>
             <Head>
                 <title>Scheduler - Register</title>
+                <meta name="description" content="An application for the students and faculty both like" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 

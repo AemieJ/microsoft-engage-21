@@ -93,6 +93,11 @@ export default function Prefs({ date, code }) {
 
     return (
         <>
+        <Head>
+        <title>Scheduler - Preferences</title>
+        <meta name="description" content="An application for the students and faculty both like" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
             <div className={styles.title_sec}>
                 <p className={styles.title}>{code} - Preferences</p>
                 <InputGroup style={{ width: "auto" }}>

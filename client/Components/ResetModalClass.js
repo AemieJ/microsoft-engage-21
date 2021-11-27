@@ -53,7 +53,7 @@ const ResetModalClass = () => {
             </Modal.Header>
             <Modal.Body>
                 <p>
-                    As {"it's"} Friday again, it is time to clear your code and reset your preferences
+                    As {"it's"} Saturday again, it is time to clear your code and reset your preferences
                     for the next week.
         </p>
         <Button

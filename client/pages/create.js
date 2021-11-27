@@ -62,6 +62,7 @@ export default function Create() {
         <>
             <Head>
                 <title>Scheduler - Create Class</title>
+                <meta name="description" content="An application for the students and faculty both like" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 

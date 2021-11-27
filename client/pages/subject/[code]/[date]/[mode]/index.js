@@ -131,6 +131,11 @@ export default function ModeAttend({ date, code, mode }) {
 
     return (
         <>
+        <Head>
+        <title>Scheduler - Submit preferences</title>
+        <meta name="description" content="An application for the students and faculty both like" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
             <Row className={styles.main}>
                 <Col className={styles.image}><Image src={login} className={styles.login_image} /></Col>
                 <Col>

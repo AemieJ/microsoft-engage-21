@@ -35,7 +35,7 @@ const ResetModalFac = () => {
             </Modal.Header>
             <Modal.Body>
                 <p>
-                    As {"it's"} Friday again, it is time to get back the access on creating timetables. 
+                    As {"it's"} Saturday again, it is time to get back the access on creating timetables. 
         </p>
         <Button
                         style={{ width: "30%" }}

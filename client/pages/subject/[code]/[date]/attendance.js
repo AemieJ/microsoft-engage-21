@@ -69,6 +69,11 @@ export default function Attendance({ date, code }) {
 
     return (
         <>
+        <Head>
+        <title>Scheduler - Attendance</title>
+        <meta name="description" content="An application for the students and faculty both like" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
             <div className={styles.title_sec}>
                 <p className={styles.title}>{code} - Attendance</p>
                 <InputGroup style={{ width: "auto" }}>

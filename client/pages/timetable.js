@@ -134,7 +134,8 @@ export default function TimeTable() {
     return (
         <>
             <Head>
-                <title>Scheduler - Create TimeTable</title>
+                <title>Scheduler - Create timetable</title>
+                <meta name="description" content="An application for the students and faculty both like" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 

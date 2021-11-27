@@ -6,6 +6,11 @@ import styles from '../styles/404.module.css'
 export default function Custom404() {
     return (
         <>
+        <Head>
+        <title>Scheduler - 404! </title>
+        <meta name="description" content="An application for the students and faculty both like" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
         <div className={styles.main}>
         <Col lg={6}><Image src={notFound} /></Col>
         <Col className={styles.title}><b>404!! {"You've"} landed on the wrong page!</b><br/>
