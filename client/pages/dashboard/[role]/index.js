@@ -33,7 +33,7 @@ export default function Dashboard({ roleURL }) {
         console.log(item)
         let today = new Date()
         let todayDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
-        if (today.getDay() === 5) {
+        if (today.getDay() === 6) {
             if (item !== 0) {
                 let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
                 d.setUTCSeconds(item);
@@ -214,7 +214,7 @@ export default function Dashboard({ roleURL }) {
                                             disabled={true}
                                             onChange={e => setRemote(e.target.value)} />
                                         <Button
-                                            disabled={date.getDay() !== 5 || (remote !== null && remote !== "")}
+                                            disabled={date.getDay() !== 6 || (remote !== null && remote !== "")}
                                             onClick={generateRemoteCode}
                                         >Generate</Button>
                                     </InputGroup>
@@ -229,13 +229,13 @@ export default function Dashboard({ roleURL }) {
                                             disabled={true}
                                             onChange={e => setPerson(e.target.value)} />
                                         <Button
-                                            disabled={date.getDay() !== 5 || (person !== null && person !== "")}
+                                            disabled={date.getDay() !== 6 || (person !== null && person !== "")}
                                             onClick={generateSeatCode}
                                         >Generate</Button>
                                     </InputGroup>
                                 </div>
                                 {
-                                    date.getDay() !== 5 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
+                                    date.getDay() !== 6 ? <p className={styles.danger_msg}><b>You {"can't"} make any generation for the entire week. Your weekly
             preferences are set and will be renewed on Saturday itself.</b></p> : <></>
                                 }
                                 <Subjects subjects={subjects} />

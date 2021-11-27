@@ -20,7 +20,7 @@ export default function TimeTable() {
 
     useEffect(() => {
         const today = new Date();
-        if (today.getDay() !== 5) setDisabled(true)
+        if (today.getDay() !== 6) setDisabled(true)
         else setDisabled(false)
     }, [])
 

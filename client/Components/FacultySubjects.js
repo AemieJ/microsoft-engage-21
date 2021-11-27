@@ -10,7 +10,7 @@ const FacultySubjects = ({ subjects }) => {
     //     let today = new Date()
     //     let todayDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
 
-    //     if (today.getDay() === 5) {
+    //     if (today.getDay() === 6) {
     //         if (item !== 0) {
     //             let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
     //             d.setUTCSeconds(item);
