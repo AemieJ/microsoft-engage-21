@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Image from "next/image"
 import notFound from "../public/404.svg"
 import { Row, Col, Button } from "react-bootstrap"
