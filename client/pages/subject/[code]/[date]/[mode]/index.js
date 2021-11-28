@@ -152,7 +152,11 @@ export default function ModeAttend({ date, code, mode }) {
       </Head>
       <Row className={styles.main}>
         <Col className={styles.image}>
-          <Image src={login} className={styles.login_image} alt="Image pertaining to Subject attendance page"/>
+          <Image
+            src={login}
+            className={styles.login_image}
+            alt="Image pertaining to Subject attendance page"
+          />
         </Col>
         <Col>
           <div className={styles.title_sec}>
@@ -246,8 +250,11 @@ export default function ModeAttend({ date, code, mode }) {
                           Click on send OTP for double-verification
                         </div>
                         {!click ? (
-                          <Button style={{ width: "30%" }} onClick={sendOtp}
-                          aria-label="Send OTP">
+                          <Button
+                            style={{ width: "30%" }}
+                            onClick={sendOtp}
+                            aria-label="Send OTP"
+                          >
                             Send OTP
                           </Button>
                         ) : (

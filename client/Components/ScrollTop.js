@@ -27,7 +27,7 @@ const ScrollTop = () => {
           window.scrollTo(0, 0)
         }}
       >
-        <Image src={arrow} alt="Scroll top icon"/>
+        <Image src={arrow} alt="Scroll top icon" />
       </Button>
     </>
   )

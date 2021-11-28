@@ -399,7 +399,7 @@ export default function SubjectStudent({ code }) {
                               <Row>
                                 {data[4] === "Remote" ? (
                                   <Button
-                                  aria-label="Direct remote attendance page"
+                                    aria-label="Direct remote attendance page"
                                     disabled={data[3] !== today}
                                     onClick={(e) => {
                                       e.preventDefault()
@@ -410,7 +410,7 @@ export default function SubjectStudent({ code }) {
                                   </Button>
                                 ) : (
                                   <Button
-                                  aria-label="Direct offline attendance page"
+                                    aria-label="Direct offline attendance page"
                                     disabled={data[3] !== today}
                                     onClick={(e) => {
                                       e.preventDefault()

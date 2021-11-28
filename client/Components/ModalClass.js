@@ -70,8 +70,11 @@ const ModalClass = () => {
                   setCode(e.target.value)
                 }}
               />
-              <Button style={{ width: "30%" }} onClick={joinClass}
-              aria-label="Join class button">
+              <Button
+                style={{ width: "30%" }}
+                onClick={joinClass}
+                aria-label="Join class button"
+              >
                 Join
               </Button>
             </InputGroup>

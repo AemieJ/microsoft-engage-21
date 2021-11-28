@@ -221,7 +221,7 @@ export default function Dashboard({ roleURL }) {
             <p className={styles.title}>Dashboard</p>
             {role === "student" ? (
               <Button
-              aria-label="Join class"
+                aria-label="Join class"
                 disabled={!access}
                 onClick={(e) => {
                   e.preventDefault()

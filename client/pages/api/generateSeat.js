@@ -1,5 +1,4 @@
-import { uri } from '../../config/db.js'
-
+import { uri } from "../../config/db.js"
 
 export default async (req, res) => {
   let token = req.body

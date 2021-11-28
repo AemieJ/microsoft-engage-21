@@ -56,7 +56,7 @@ Figma Link - https://www.figma.com/file/peJwosnp6l4tXk6k6VgyvW/Microsoft?node-id
 - Enable Low secure app access 
 - Click this [link](https://accounts.google.com/DisplayUnlockCaptcha) and enable it. 
 
-4. As the mail service is enabled, you will need to make a few change in the lines of code to perform the preferences option using the local timezone in development phase. Move to `/pages/subject/[code]/[date]/preferences.js` file and within this replace the lines **[22-30]** with the following code - 
+4. As the mail service is enabled, you will need to make a few change in the lines of code to perform the preferences option using the local timezone in development phase. Move to `/pages/subject/[code]/[date]/preferences.js` file and within this replace the lines **[29-36]** with the following code - 
 
     ```javascript
     let splits = date.split('-')

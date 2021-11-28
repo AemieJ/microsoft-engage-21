@@ -96,7 +96,11 @@ export default function Login() {
 
       <Row className={styles.main}>
         <Col className={styles.image}>
-          <Image src={login} className={styles.login_image} alt="Image pertaining to login page" />
+          <Image
+            src={login}
+            className={styles.login_image}
+            alt="Image pertaining to login page"
+          />
         </Col>
         <Col sm={12} lg={true}>
           <div>
