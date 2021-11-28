@@ -3,7 +3,7 @@ import { uri } from '../../config/db.js'
 
 export default async (req, res) => {
   let parsed = JSON.parse(req.body)
-  console.log(parsed.body)
+  // console.log(parsed.body)
   let requestOptions = {
     method: "POST",
     headers: {

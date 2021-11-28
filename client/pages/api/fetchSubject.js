@@ -63,7 +63,7 @@ export default async (req, res) => {
       lectureID,
     }
 
-    console.log(data)
+    // console.log(data)
     res.status(200).json({ data: JSON.stringify(data), err: null })
   } catch (err) {
     res.status(500).json({ data: null, err: "Server Error" })

@@ -49,7 +49,7 @@ export default function Dashboard({ roleURL }) {
 
   useEffect(() => {
     let item = Number(localStorage.getItem("lastWeek"))
-    console.log(item)
+    // console.log(item)
     let today = new Date()
     let todayDate =
       today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear()

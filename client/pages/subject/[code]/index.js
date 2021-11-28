@@ -101,7 +101,7 @@ export default function SubjectStudent({ code }) {
           (today.getMonth() + 1) +
           "-" +
           today.getFullYear()
-        console.log(table)
+        // console.log(table)
         setToday(todayDate)
         setTable(table)
         setDays(parsed.days)
@@ -134,7 +134,7 @@ export default function SubjectStudent({ code }) {
         })
       } else {
         let parsed = JSON.parse(data)
-        console.log(parsed)
+        // console.log(parsed)
         let prefs = parsed.preferences
         let length = tableData.length
         for (let i = 0; i < length; ++i) {
