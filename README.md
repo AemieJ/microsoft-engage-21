@@ -25,6 +25,13 @@ This feature that allows students to submit weekly preferences for attending cla
 2. Move into directory - `cd scheduler`
 <br/><br/>
 
+## 💻 &nbsp; Prerequisites 
+
+1. Node and NPM - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+2. Yarn [optional] - https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
+3. PostgreSQL - https://www.postgresql.org/download/
+<br/><br/>
+
 ## ✨ &nbsp; Client Side
 Client side deals with the front-end user interactive code. The section include wireframe model link, followed by the tech stacks used and how to run the client on your local machine.
 
