@@ -17,6 +17,20 @@ This feature that allows students to submit weekly preferences for attending cla
 
 1. Client side - Vercel (https://microsoft-engage-21.vercel.app/)
 2. Server side - EC2 (http://ec2-13-232-90-241.ap-south-1.compute.amazonaws.com:4000)
+3. Credentials to utilize for students (for login) - 
+    ```json
+    {
+        "email": "u18co059@coed.svnit.ac.in",
+        "password": "Test#123"
+    }
+    ```
+4. Credentials to utilize for faculty (for login) - 
+    ```json
+    {
+        "email": "upr@coed.svnit.ac.in",
+        "password": "Test#123"
+    }
+    ```
 <br/><br/>
 
 ## 💻 &nbsp; Cloning the repo on your local machine 
