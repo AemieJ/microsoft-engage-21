@@ -2,8 +2,6 @@
   "name": "aemie-ms-api",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/godcrampy/aemie-ms-api.git",
-  "author": "Sahil <sahilbondre@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
